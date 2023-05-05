@@ -6,9 +6,6 @@ public:
     }
 
     int maxVowels(string s, int k) {
-
-        if (s.size() < k) { return 0; } 
-
         int start = 0; 
         int best = 0; 
         int curr = 0; 
