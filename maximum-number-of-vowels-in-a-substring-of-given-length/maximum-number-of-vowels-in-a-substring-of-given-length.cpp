@@ -7,8 +7,6 @@ public:
 
     int maxVowels(string s, int k) {
 
-        ios::sync_with_stdio(false);
-        
         int start = 0; 
         int best = 0; 
         int curr = 0; 
