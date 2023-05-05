@@ -10,8 +10,8 @@ public:
         }
 
         if (digits[0] > 9){
-            digits.resize(digits.size() + 1, 0);
             digits[0] = 1;
+            digits.push_back(0);
         }
 
         return digits; 
