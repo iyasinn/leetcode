@@ -10,7 +10,6 @@ public:
         if (s.size() < k) { return 0; } 
 
         int start = 0; 
-        int end = k - 1; 
         int best = 0; 
         int curr = 0; 
 
@@ -20,19 +19,11 @@ public:
 
         best = curr; 
 
-        while (end < s.size()){
-
-            if (end == s.size() - 1){
-                return best; 
-            }     
-
-            if (isVowel(s[end + 1])){ curr++; }
+        for (int end = k; end < s.size(); end++){
+            if (isVowel(s[end])){ curr++; }
             if (isVowel(s[start])){ curr--; }
-
             best = max(curr, best);
-
             start++; 
-            end++; 
         }
 
 
