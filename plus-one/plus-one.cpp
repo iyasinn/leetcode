@@ -4,9 +4,11 @@ public:
 
         digits.back()++;
 
-        for (int i = digits.size() - 1; i >= 1 && digits[i] > 9; i--){
-            digits[i] = 0; 
-            digits[i - 1]++;
+        for (int i = digits.size() - 1; i >= 1; i--){
+            if (digits[i] > 9){
+                digits[i - 1]++;
+                digits[i] = 0;
+            }
         }
 
         if (digits[0] > 9){
