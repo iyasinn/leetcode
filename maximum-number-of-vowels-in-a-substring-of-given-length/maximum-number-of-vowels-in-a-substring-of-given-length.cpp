@@ -6,21 +6,20 @@ public:
     }
 
     int maxVowels(string s, int k) {
+
         int start = 0; 
         int best = 0; 
         int curr = 0; 
 
-        for (int i = 0; i < k; i++){
-            if (isVowel(s[i])){ curr++; }
-        }
-
-        best = curr; 
-
-        for (int end = k; end < s.size(); end++){
+        for (int end = 0; end < s.size(); end++){
             if (isVowel(s[end])){ curr++; }
-            if (isVowel(s[start])){ curr--; }
-            best = max(curr, best);
-            start++; 
+
+            if (end - start == k){
+                curr -= (isVowel(s[start]));
+                start++;
+            }
+
+            best = max(curr, best); 
         }
 
 
