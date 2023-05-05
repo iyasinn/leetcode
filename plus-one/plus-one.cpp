@@ -2,16 +2,10 @@ class Solution {
 public:
     vector<int> plusOne(vector<int>& digits) {
 
-        digits.back()++;
-
-        for (int i = digits.size() - 1; i >= 1; i--){
-            if (digits[i] > 9){
-                digits[i - 1]++;
-                digits[i] = 0;
-            }
-            else{
-                return digits; 
-            }
+        for (int i = digits.size() - 1; i >= 0; i--){
+            digits[i]++;
+            if (digits[i] <= 9){ return digits; }
+            digits[i] = bool(i == 0) * 10; 
         }
 
         if (digits[0] > 9){
