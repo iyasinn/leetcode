@@ -1,12 +1,14 @@
 class Solution {
 public:
 
-    bool isVowel(char c){
+    inline bool isVowel(char c){
         return c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u';
     }
 
     int maxVowels(string s, int k) {
 
+        ios::sync_with_stdio(false);
+        
         int start = 0; 
         int best = 0; 
         int curr = 0; 
