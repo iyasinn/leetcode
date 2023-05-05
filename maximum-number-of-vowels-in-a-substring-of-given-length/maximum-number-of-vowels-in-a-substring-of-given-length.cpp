@@ -1,7 +1,7 @@
 class Solution {
 public:
 
-    bool isVowel(char c){
+    inline bool isVowel(char c){
         return c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u';
     }
 
