@@ -9,38 +9,29 @@ public:
     string addBinary(string a, string b) {
 
         // Very important
-        string output(max(a.size(), b.size()) + 1, '0');
+        string output;
+        output.reserve(max(a.size(), b.size()));
+        output.push_back('0');
 
-        int oInd = output.size() - 1; 
         int aInd = a.size() - 1; 
         int bInd = b.size() - 1; 
-
         
-        while (oInd >= 1 || aInd >= 0 || bInd >= 0){
+        while (aInd >= 0 || bInd >= 0){
 
-            int sum = 0; 
-
+            int sum = ctoi(output.back()); 
             if (aInd >= 0){ sum += ctoi(a[aInd]); }
             if (bInd >= 0){ sum += ctoi(b[bInd]); }
-            if (oInd >= 0){ sum += ctoi(output[oInd]); }
-            
-            cout << sum << " " << output << endl;
 
-            if (sum >= 2){
-                output[oInd - 1] = '1';
-            }
-
-            sum = (sum < 2) ? sum : sum - 2; 
-            output[oInd] = '0' + sum;
-
-            oInd--; 
+            output.back() = '0' + (sum % 2); 
+            output.push_back((sum >= 2) ? '1' : '0');
+            cout << output;
             aInd--;
             bInd--; 
         }
 
-        if (output[0] == '0'){
-            output.erase(output.begin());
-        }
+        if (output.back() == '0') { output.pop_back(); }
+        
+        reverse(output.begin(), output.end());
 
         return output;
     }
