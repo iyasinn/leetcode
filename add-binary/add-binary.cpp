@@ -39,7 +39,7 @@ public:
         }
 
         if (output[0] == '0'){
-            return string(output.begin() + 1, output.end());
+            output.erase(output.begin());
         }
 
         return output;
