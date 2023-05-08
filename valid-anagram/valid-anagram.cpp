@@ -71,15 +71,10 @@ public:
             arr[t[i] - 'a'] -= 1;
         }
 
-        for (auto count : arr){
-            cout << count << endl;
-            if (count != 0){
-                return false; 
-            }
+ 
+        for (int i = 0; i < 26; i++){
+            if (arr[i] != 0) { return false; }
         }
-        // for (int i = 0; i < 26; i++){
-        //     if (arr[i] != 0) { return false; }
-        // }
 
         return true; 
     }
