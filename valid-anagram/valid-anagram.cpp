@@ -64,16 +64,22 @@ public:
         if (s.size() != t.size()) { return false; }
 
         // Zero initialized?
-        array<int, 26> arr = {};
+        int arr[26] = {0}; 
 
         for (int i = 0; i < s.size(); i++){
-            arr[s[i] - 'a']++;
-            arr[t[i] - 'a']--;
+            arr[s[i] - 'a'] += 1;
+            arr[t[i] - 'a'] -= 1;
         }
 
-        for (int i = 0; i < 26; i++){
-            if (arr[i] != 0) { return false; }
+        for (auto count : arr){
+            cout << count << endl;
+            if (count != 0){
+                return false; 
+            }
         }
+        // for (int i = 0; i < 26; i++){
+        //     if (arr[i] != 0) { return false; }
+        // }
 
         return true; 
     }
