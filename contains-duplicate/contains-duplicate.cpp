@@ -35,10 +35,9 @@ public:
         unordered_set<int> val;
 
         for (int i = 0; i < nums.size(); i++){
-            if (val.count(nums[i]) == 1){
+            if (val.insert(nums[i]).second == false){
                 return true; 
             }
-            val.insert(nums[i]);
         }
         
         return false; 
