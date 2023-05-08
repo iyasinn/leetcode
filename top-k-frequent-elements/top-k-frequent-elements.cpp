@@ -12,25 +12,22 @@ public:
         priority_queue<pair<int, int>, 
                        vector<pair<int, int>>, 
                        decltype(cmp)> 
-                       pq(count.begin(), count.end(), cmp); 
-
-        // for (auto x : count){
-        //     pq.push({x.first, x.second});
-        // }
-
+                       pq(cmp); 
         
-        while (pq.size() > k){
-            pq.pop();
+
+        for (pair<const int, int>& x : count){
+            pq.push(x);
+            if (pq.size() > k){ pq.pop(); }
         }
 
-        vector<int> sol;
+        vector<int> sol; 
+        sol.reserve(k);
 
         while (!pq.empty()){
-            sol.push_back(pq.top().first);
+            sol.emplace_back(move(pq.top().first));
             pq.pop();
         }
 
-    
         return sol;
     }
 };
