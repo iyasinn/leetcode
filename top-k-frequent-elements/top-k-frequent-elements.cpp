@@ -6,17 +6,13 @@ public:
         for (auto val : nums){
             count[val]++;
         }
-
-        auto cmp = [](pair<int, int> a, pair<int, int> b){ return a.second >= b.second; };
-
         priority_queue<pair<int, int>, 
                        vector<pair<int, int>>, 
-                       decltype(cmp)> 
-                       pq(cmp);
+                       std::greater<pair<int,int>>>
+                       pq;
         
-
         for (pair<const int, int>& x : count){
-            pq.push(x);
+            pq.push({x.second, x.first});
             if (pq.size() > k){ pq.pop(); }
         }
 
@@ -24,7 +20,7 @@ public:
         sol.reserve(k);
 
         while (!pq.empty()){
-            sol.emplace_back(pq.top().first);
+            sol.emplace_back(pq.top().second);
             pq.pop();
         }
 
