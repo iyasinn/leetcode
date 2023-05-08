@@ -51,15 +51,26 @@ public:
     //     return sol;
     // }
 
-    vector<int> topKFrequent(vector<int>& nums, int k) {
+    // vector<int> topKFrequent(vector<int>& nums, int k) {
 
+    //     unordered_map<int, int> count;
+    //     vector<int> solution;
+    //     for (auto val : nums) count[val]++;
+    //     vector<pair<int, int>> vec; 
+    //     for (pair<const int, int>& p : count){ vec.push_back({p.second, p.first}); }
+    //     std::nth_element(vec.begin(), vec.begin() + k, vec.end(), std::greater<pair<int,int>>());
+    //     for (int i = 0; i < k; i++){ solution.emplace_back(vec[i].second);}
+    //     return solution;
+    // }
+
+    vector<int> topKFrequent(vector<int>& nums, int k) {
         unordered_map<int, int> count;
         vector<int> solution;
-        for (auto val : nums) count[val]++;
+        for (auto& val : nums) count[val]++;
         vector<pair<int, int>> vec; 
-        for (pair<const int, int>& p : count){ vec.push_back({p.second, p.first}); }
-        std::nth_element(vec.begin(), vec.begin() + k, vec.end(), std::greater<pair<int,int>>());
-        for (int i = 0; i < k; i++){ solution.emplace_back(vec[i].second);}
+        for (auto& p : count){ vec.push_back({p.second, p.first}); }
+        std::nth_element(vec.begin(), vec.end() - k, vec.end());
+        for (int i = vec.size() - k; i < vec.size(); i++){ solution.emplace_back(vec[i].second);}
         return solution;
     }
 
