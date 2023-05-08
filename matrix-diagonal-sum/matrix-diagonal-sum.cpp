@@ -24,8 +24,7 @@ public:
         int sol = 0; 
 
         for (int row = 0; row < mat.size(); row++){
-            sol += mat[row][start];
-            sol += mat[row][numCol - 1 - start];
+            sol += mat[row][start] + mat[row][numCol - 1 - start];
             start++; 
         }
 
