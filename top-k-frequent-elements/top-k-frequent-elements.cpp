@@ -12,7 +12,7 @@ public:
         priority_queue<pair<int, int>, 
                        vector<pair<int, int>>, 
                        decltype(cmp)> 
-                       pq(cmp); 
+                       pq(cmp);
         
 
         for (pair<const int, int>& x : count){
@@ -24,7 +24,7 @@ public:
         sol.reserve(k);
 
         while (!pq.empty()){
-            sol.emplace_back(move(pq.top().first));
+            sol.emplace_back(pq.top().first);
             pq.pop();
         }
 
