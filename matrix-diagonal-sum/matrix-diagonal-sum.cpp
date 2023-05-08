@@ -41,17 +41,35 @@ public:
         const int numCol = mat[0].size(); 
         int sol = 0; 
 
-        for (int row = 0; row < mat.size() / 2; row++){
+        for (int row = 0; row < mat.size(); row++){
             sol += mat[row][row] + mat[row][mat.size() - 1 - row];
-            sol += mat[mat.size() - 1 - row][row] + mat[mat.size() - 1 - row][mat.size() - 1 - row];
         }
 
         if (numCol % 2 == 1){
-            sol += mat[numCol / 2][numCol / 2];
+            sol -= mat[numCol / 2][numCol / 2];
         }
 
         return sol;
     }
+
+
+    //     int diagonalSum(vector<vector<int>>& mat) {
+
+
+    //     const int numCol = mat[0].size(); 
+    //     int sol = 0; 
+
+    //     for (int row = 0; row < mat.size() / 2; row++){
+    //         sol += mat[row][row] + mat[row][mat.size() - 1 - row];
+    //         sol += mat[mat.size() - 1 - row][row] + mat[mat.size() - 1 - row][mat.size() - 1 - row];
+    //     }
+
+    //     if (numCol % 2 == 1){
+    //         sol += mat[numCol / 2][numCol / 2];
+    //     }
+
+    //     return sol;
+    // }
 
 
 };
