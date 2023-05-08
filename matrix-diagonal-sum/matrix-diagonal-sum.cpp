@@ -26,8 +26,11 @@ public:
         for (int row = 0; row < mat.size(); row++){
             sol += mat[row][start];
             sol += mat[row][numCol - 1 - start];
-            if (start == numCol - 1 - start){ sol -= mat[row][start]; }
             start++; 
+        }
+
+        if (numCol % 2 == 1){
+            sol -= mat[numCol / 2][numCol / 2];
         }
 
         return sol;
