@@ -11,17 +11,38 @@ public:
     //     return false; 
     // }
 
+    // bool containsDuplicate(vector<int>& nums) {
+
+    //     // Sort, then iterate through and check 
+    //     // O(n * Log(n))
+
+    //     sort(nums.begin(), nums.end());
+
+    //     for (int i = 0; i < nums.size() - 1; i++){
+    //         if (nums[i] == nums[i + 1]) return true; 
+    //     }
+        
+    //     return false; 
+    // }
+
+
     bool containsDuplicate(vector<int>& nums) {
 
-        // Sort, then iterate through and check 
-        // O(n * Log(n))
+        // Set
+        // O(n) insertion, and O(1) retrievl
+        int x; 
 
-        sort(nums.begin(), nums.end());
+        unordered_set<int> val;
 
-        for (int i = 0; i < nums.size() - 1; i++){
-            if (nums[i] == nums[i + 1]) return true; 
+        for (int i = 0; i < nums.size(); i++){
+            if (val.count(nums[i]) == 1){
+                return true; 
+            }
+            val.insert(nums[i]);
         }
         
         return false; 
     }
+
+
 };
