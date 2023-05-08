@@ -37,19 +37,13 @@ public:
 
     int diagonalSum(vector<vector<int>>& mat) {
 
-
-        const int numCol = mat[0].size(); 
         int sol = 0; 
 
         for (int row = 0; row < mat.size(); row++){
             sol += mat[row][row] + mat[row][mat.size() - 1 - row];
         }
 
-        if (numCol % 2 == 1){
-            sol -= mat[numCol / 2][numCol / 2];
-        }
-
-        return sol;
+        return (mat.size() % 2 == 1) ? (sol - mat[mat.size() / 2][mat.size() / 2]) : sol;
     }
 
 
