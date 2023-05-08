@@ -63,6 +63,7 @@ public:
     //     return solution;
     // }
 
+    // O(n) solution
     vector<int> topKFrequent(vector<int>& nums, int k) {
         unordered_map<int, int> count;
         vector<int> solution;
