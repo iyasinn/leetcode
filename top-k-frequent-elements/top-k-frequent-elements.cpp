@@ -42,15 +42,12 @@ public:
     vector<int> topKFrequent(vector<int>& nums, int k) {
 
         unordered_map<int, int> count;
-        for (auto val : nums){
-            count[val]++;
-        }
+        for (auto val : nums) count[val]++;
 
         vector<pair<int, int>> vec; 
         for (pair<const int, int>& p : count){ vec.push_back({p.second, p.first}); }
 
         sort(vec.begin(), vec.end(), greater<pair<int, int>>());
-
         vector<int> sol(k); 
         transform(vec.begin(), vec.begin() + k, sol.begin(), [](pair<const int, int> p){ return p.second; });
 
