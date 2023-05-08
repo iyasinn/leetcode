@@ -104,12 +104,13 @@ public:
 
         vector<int> solution; 
 
-        for (int i = bucket.size() - 1; i > 0 && solution.size() < k; i--){
-            for (int j = 0; j < bucket[i].size() && solution.size() < k; j++){
+        for (int i = bucket.size() - 1; i > 0; i--){
+            for (int j = 0; j < bucket[i].size(); j++){
                 solution.emplace_back(bucket[i][j]);
+                if (solution.size() == k){ return solution; }
             }
         }
-        return solution;
+        return {};
     }
 
 
