@@ -64,7 +64,7 @@ public:
         if (s.size() != t.size()) { return false; }
 
         // Zero initialized?
-        int arr[26] = {0}; 
+        int arr[26] = {}; 
 
         for (int i = 0; i < s.size(); i++){
             arr[s[i] - 'a'] += 1;
