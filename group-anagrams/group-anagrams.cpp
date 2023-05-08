@@ -1,21 +1,20 @@
 class Solution {
 public:
 
-    bool isAnagram(string s, string t){
+    // bool isAnagram(string s, string t){
 
-        if (s.size() != t.size()) { return false; }
-        int arr[26] = {}; 
+    //     if (s.size() != t.size()) { return false; }
+    //     int arr[26] = {}; 
 
-        for (int i = 0; i < s.size(); i++){
-            arr[s[i] - 'a'] += 1;
-            arr[t[i] - 'a'] -= 1;
-        }
-        for (int i = 0; i < 26; i++){
-            if (arr[i] != 0) { return false; }
-        }
-        return true; 
-    }
-
+    //     for (int i = 0; i < s.size(); i++){
+    //         arr[s[i] - 'a'] += 1;
+    //         arr[t[i] - 'a'] -= 1;
+    //     }
+    //     for (int i = 0; i < 26; i++){
+    //         if (arr[i] != 0) { return false; }
+    //     }
+    //     return true; 
+    // }
     // The best approach might be a set union / unionfind approach 
 
     // O(numStrs * maxGroupSize * maxWordSize) -> O(n^3)
@@ -41,10 +40,11 @@ public:
     //     return output;
     // }
 
+    // This is an O(n * n log n) = O(n^2 log(n))
     vector<vector<string>> groupAnagrams(vector<string>& strs){
 
         unordered_map<string, vector<string>> val; 
-
+        
         for (auto s : strs){
             string x = s;
             sort(x.begin(), x.end());
