@@ -41,7 +41,12 @@ public:
     // }
 
     // This is an O(n * n log n) = O(n^2 log(n))
-    vector<vector<string>> groupAnagrams(vector<string>& strs){
+    // This is 
+    // n strings, now the average si
+    // O(n * m * 26) since this is how we sort
+    // More improtantly
+    // O(n * m * log(m)) but note that the sorting is not mlogm, because the size is constant, so the sorting is actually going to be O(26) or O(1)
+     vector<vector<string>> groupAnagrams(vector<string>& strs){
 
         unordered_map<string, vector<string>> val; 
         
@@ -58,7 +63,6 @@ public:
         }
 
         return output;
-
     }
 };
 
