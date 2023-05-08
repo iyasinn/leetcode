@@ -17,15 +17,32 @@ public:
     //     return sol;
     // }
 
+    // int diagonalSum(vector<vector<int>>& mat) {
+
+    //     int start = 0; 
+    //     const int numCol = mat[0].size(); 
+    //     int sol = 0; 
+
+    //     for (int row = 0; row < mat.size(); row++){
+    //         sol += mat[row][start] + mat[row][numCol - 1 - start];
+    //         start++; 
+    //     }
+
+    //     if (numCol % 2 == 1){
+    //         sol -= mat[numCol / 2][numCol / 2];
+    //     }
+
+    //     return sol;
+    // }
+
     int diagonalSum(vector<vector<int>>& mat) {
 
-        int start = 0; 
+
         const int numCol = mat[0].size(); 
         int sol = 0; 
 
         for (int row = 0; row < mat.size(); row++){
-            sol += mat[row][start] + mat[row][numCol - 1 - start];
-            start++; 
+            sol += mat[row][row] + mat[row][mat.size() - 1 - row];
         }
 
         if (numCol % 2 == 1){
@@ -34,5 +51,6 @@ public:
 
         return sol;
     }
+
 
 };
