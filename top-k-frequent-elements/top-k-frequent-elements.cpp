@@ -12,11 +12,11 @@ public:
         priority_queue<pair<int, int>, 
                        vector<pair<int, int>>, 
                        decltype(cmp)> 
-                       pq(cmp); 
+                       pq(count.begin(), count.end(), cmp); 
 
-        for (auto x : count){
-            pq.push({x.first, x.second});
-        }
+        // for (auto x : count){
+        //     pq.push({x.first, x.second});
+        // }
 
         
         while (pq.size() > k){
