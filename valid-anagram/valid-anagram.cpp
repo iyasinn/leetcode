@@ -24,23 +24,34 @@ public:
 
     //     return true; 
     // }
+    
+    // O(n) 
+    // bool isAnagram(string s, string t){
+
+    //     if (s.size() != t.size()){ return false; }
+    //     const int SIZE = s.size();
+
+    //     unordered_map<char, int> val;
+
+    //     for (int i = 0; i < SIZE; i++){
+    //         val[s[i]]++;
+    //         val[t[i]]--;
+    //     }
+
+    //     for (auto v : val){
+    //         if (v.second != 0){ return false; }
+    //     }
+
+    //     return true; 
+    // }
 
     bool isAnagram(string s, string t){
-
-        if (s.size() != t.size()){ return false; }
-        const int SIZE = s.size();
-
-        unordered_map<char, int> val;
-
-        for (int i = 0; i < SIZE; i++){
-            val[s[i]]++;
-            val[t[i]]--;
-        }
-
-        for (auto v : val){
-            if (v.second != 0){ return false; }
-        }
-
-        return true; 
+        sort(s.begin(), s.end());
+        sort(t.begin(), t.end());
+        return s == t; 
     }
+
+
+
+
 };
