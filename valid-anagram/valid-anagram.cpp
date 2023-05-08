@@ -25,7 +25,7 @@ public:
     //     return true; 
     // }
     
-    // O(n) time, O(n) space
+    // O(n) time, O(1) space BECAUSE there are ONLY 26 alphabet characters
     // bool isAnagram(string s, string t){
 
     //     if (s.size() != t.size()){ return false; }
@@ -47,22 +47,36 @@ public:
 
     // O(n log n) time copmlexity, O(1) space
     // bool isAnagram(string s, string t){
+    //     if (s.size() != t.size()) return false; 
     //     sort(s.begin(), s.end());
     //     sort(t.begin(), t.end());
     //     return s == t; 
     // }
 
-
+    // O(n) solution, O(1) space
+    // This soltuion made me ralize the importance of sometime suisn simple DS
+    // Sometimes if you have constant things to cmopare, maybe just make a constan tarray
+    // So any constant should be turned into a thing we can use
+    // SPECIFICLALY, A CONSTANT ORDERED set of data can be turned into an O(1) space HASHAMP
+    // This is just a direct mapped array here tbh 
     bool isAnagram(string s, string t){
 
-        if (s.size() != t.size()) return false; 
+        if (s.size() != t.size()) { return false; }
 
-        sort(s.begin(), s.end());
-        sort(t.begin(), t.end());
-        return s == t; 
+        // Zero initialized?
+        array<int, 26> arr = {};
+
+        for (int i = 0; i < s.size(); i++){
+            arr[s[i] - 'a']++;
+            arr[t[i] - 'a']--;
+        }
+
+        for (int i = 0; i < 26; i++){
+            if (arr[i] != 0) { return false; }
+        }
+
+        return true; 
     }
-
-
 
 
 };
