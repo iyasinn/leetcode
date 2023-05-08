@@ -64,11 +64,12 @@ public:
     // }
 
     // O(n) solution
+    template<typename T = pair<int, int>>
     vector<int> topKFrequent(vector<int>& nums, int k) {
         unordered_map<int, int> count;
         vector<int> solution;
         for (auto& val : nums) count[val]++;
-        vector<pair<int, int>> vec; 
+        vector<T> vec; 
         for (auto& p : count){ vec.push_back({p.second, p.first}); }
         std::nth_element(vec.begin(), vec.end() - k, vec.end());
         for (int i = vec.size() - k; i < vec.size(); i++){ solution.emplace_back(vec[i].second);}
