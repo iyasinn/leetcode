@@ -47,9 +47,7 @@ public:
         vector<long long> tab(q.size(), -1);
     
         for (int i = q.size() - 1; i >= 0; i--){
-
             tab[i] = q[i][0];
-
             if (i + q[i][1] + 1 < q.size()){
                 tab[i] = max(tab[i], q[i][0] + tab[i + q[i][1] + 1]);
             }
@@ -57,7 +55,6 @@ public:
                 tab[i] = max(tab[i], tab[i + 1]); 
             }
         }
-
         return tab[0];
     }
 
