@@ -51,8 +51,14 @@ public:
 
     int maxUncrossedLines(vector<int>& n1, vector<int>& n2) {
         vector<vector<int>> memo(n1.size(), vector<int>(n2.size(), -1));
+        for (auto& row : memo){}
         return rec(n1, n2, n1.size() - 1, n2.size() - 1, memo);
     }
+
+
+
+    // bottom up solution
+
 
 };
 
