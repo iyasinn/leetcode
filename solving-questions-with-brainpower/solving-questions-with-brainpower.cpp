@@ -41,19 +41,15 @@ public:
     //     return tab[q.size() - 1];
     // }
 
-    // Bottom up that makes more sense
+    
     long long mostPoints(vector<vector<int>>& q) {
 
-        vector<long long> tab(q.size(), -1);
-    
+        vector<long long> tab(q.size() + 1, 0);
+
         for (int i = q.size() - 1; i >= 0; i--){
-            tab[i] = q[i][0];
-            if (i + q[i][1] + 1 < q.size()){
-                tab[i] = max(tab[i], q[i][0] + tab[i + q[i][1] + 1]);
-            }
-            if (i + 1 < q.size()){ 
-                tab[i] = max(tab[i], tab[i + 1]); 
-            }
+            int points = q[i][0];
+            int jump = min(i + q[i][1] + 1, int(q.size())); 
+            tab[i] = max(tab[i + 1], points + tab[jump]);
         }
         return tab[0];
     }
