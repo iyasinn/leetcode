@@ -5,13 +5,15 @@ public:
     // O(n)
     auto checkK(vector<int>& piles, double k, int h) -> bool {
         long int hours = 0; 
-        for (auto x : piles){
-            if (ceil(x / k) > h){ return false; }
-            hours += ceil(x / k);
-            if (hours > h){ return false; }
-        }
-        return hours <= h; 
 
+        for (int i = piles.size() - 1; i >= 0; i--){
+
+            if (ceil(piles[i] / k) > h || hours + ceil(piles[i] / k) > h) return false;
+
+            hours += ceil(piles[i] / k);
+        }
+
+        return hours <= h; 
     }
 
     // O(2^|max| * |piles|)
@@ -38,6 +40,7 @@ public:
         int best = 0; 
 
         while (start < end){
+
             int mid = start + ((end - start) / 2); 
 
             if (checkK(piles, mid, h)){
