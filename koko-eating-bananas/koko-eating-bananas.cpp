@@ -1,22 +1,6 @@
 class Solution {
 public:
 
-
-    // O(n)
-    inline auto checkK(vector<int>& piles, double k, int h) -> bool {
-        long int hours = 0; 
-
-        for (int i = piles.size() - 1; i >= 0; i--){
-
-            double val = ceil(piles[i] / k);
-            if (val > h || hours + val > h) return false;
-
-            hours += val;
-        }
-
-        return hours <= h; 
-    }
-
     // O(2^|max| * |piles|)
     // int minEatingSpeed(vector<int>& piles, int h) {
 
@@ -33,8 +17,24 @@ public:
     // }
 
 
+
+    // O(n)
+    inline auto checkK(vector<int>& piles, double k, int h) -> bool {
+        long int hours = 0; 
+
+        for (int i = piles.size() - 1; i >= 0; i--){
+
+            double val = ceil(piles[i] / k);
+            if (val > h || hours + val > h) return false;
+
+            hours += val;
+        }
+
+        return hours <= h; 
+    }
+
     // O(log(2^|max|) * |piles|) = O(|max| * |piles|)
-    int minEatingSpeed(vector<int>& piles, int h) {
+    inline int minEatingSpeed(vector<int>& piles, int h) {
 
         int start = 0; 
         int end = *max_element(piles.begin(), piles.end()) + 1;
