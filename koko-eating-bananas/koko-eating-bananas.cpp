@@ -8,6 +8,7 @@ public:
         for (auto x : piles){
             if (ceil(x / k) > h){ return false; }
             hours += ceil(x / k);
+            if (hours > h){ return false; }
         }
         return hours <= h; 
 
