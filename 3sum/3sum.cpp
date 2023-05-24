@@ -80,7 +80,7 @@ public:
     //     }
 
 
-
+    // O(n^2) but slow
     vector<vector<int>> threeSum(vector<int>& nums) {
         
         // Sorting allows us to take account of tools like binary search!
@@ -88,10 +88,6 @@ public:
         unordered_map<int, int> mp; 
         for (int i = 0; i < nums.size(); i++){
             mp[nums[i]] = max(mp[nums[i]], i);
-        }
-
-        for (auto x : mp){
-            cout << x.first << " " << x.second << endl;
         }
 
         vector<vector<int>> sols;
@@ -108,10 +104,8 @@ public:
                 if (mp[find] > end){
                     sols.push_back({nums[start], nums[end], find});
                 }
-                // Push end to the far right
                 end = mp[nums[end]] + 1; 
             }
-
             start = mp[nums[start]] + 1; 
         }
 
