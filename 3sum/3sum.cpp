@@ -57,6 +57,10 @@ public:
         int a = 0; 
         while (a < nums.size()){
 
+            if (nums[a] > 0){
+                break;
+            }
+
             int b = a + 1; 
             int c = nums.size() - 1; 
 
