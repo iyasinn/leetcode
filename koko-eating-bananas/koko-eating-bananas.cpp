@@ -4,7 +4,6 @@ public:
 
     // O(n)
     auto checkK(vector<int>& piles, double k, int h) -> bool {
-
         long int hours = 0; 
         for (auto x : piles){
             if (ceil(x / k) > h){ return false; }
