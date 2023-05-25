@@ -23,13 +23,10 @@ public:
         long int hours = 0; 
 
         for (int i = piles.size() - 1; i >= 0; i--){
-
             double val = ceil(piles[i] / k);
             if (val > h || hours + val > h) return false;
-
             hours += val;
         }
-
         return hours <= h; 
     }
 
@@ -43,6 +40,7 @@ public:
         while (start < end){
 
             int mid = start + ((end - start) / 2); 
+            cout << mid << endl;
 
             if (checkK(piles, mid, h)){
                 best = mid; 
