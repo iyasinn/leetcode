@@ -21,7 +21,7 @@ public:
     // O(n)
     inline auto checkK(vector<int>& piles, double k, int h) -> bool {
 
-        long int hours = 0; 
+        long long hours = 0; 
         for (int i = piles.size() - 1; i >= 0; i--){
             double val = ceil(piles[i] / k);
             if (val > h || hours + val > h) return false;
