@@ -20,29 +20,29 @@ public:
 
     // O(n)
     inline auto checkK(vector<int>& piles, double k, int h) -> bool {
-        long int hours = 0; 
 
+        long int hours = 0; 
         for (int i = piles.size() - 1; i >= 0; i--){
             double val = ceil(piles[i] / k);
             if (val > h || hours + val > h) return false;
             hours += val;
         }
-        return hours <= h; 
+        return hours <= h;
     }
 
     // O(log(2^|max|) * |piles|) = O(|max| * |piles|)
     inline int minEatingSpeed(vector<int>& piles, int h) {
 
         int start = 0; 
-        int end = *max_element(piles.begin(), piles.end()) + 1;
+        int end = 1000000000 + 1;
         int best = 0; 
 
         while (start < end){
 
             int mid = start + ((end - start) / 2); 
-            cout << mid << endl;
 
             if (checkK(piles, mid, h)){
+                cout << mid << endl;
                 best = mid; 
                 end = mid; 
             }
