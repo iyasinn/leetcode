@@ -17,12 +17,14 @@ public:
 
     // Sorting method
 
-    int maxArea(vector<int>& h){
+    inline int maxArea(vector<int>& h){
         
         // Moving the smaller is better because the small is the limiting factor
         // So potentially the smalelr might becom elarger
         // If we move the larger, we might still need it, since it is quite large
         // In a way, we only move something when it is the shortest, because we only want to deal with some large bar
+
+        ios_base::sync_with_stdio(false);
 
         int left = 0; 
         int right = h.size() - 1;
