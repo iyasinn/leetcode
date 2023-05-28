@@ -21,7 +21,7 @@ public:
                 alph[s[start] - 'A']--;
                 // letter[s[start]]--;
                 start++;
-                maxCharCount = alph[max_element(alph, alph + 26) - begin(alph)];
+                // maxCharCount = alph[max_element(alph, alph + 26) - begin(alph)];
                 // maxCharCount = max_element(letter.begin(), letter.end())->second;
             }   
 
