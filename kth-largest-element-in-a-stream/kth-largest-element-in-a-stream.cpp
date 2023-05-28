@@ -1,6 +1,8 @@
 class KthLargest {
 
 public:
+
+    // Very similar to median 
     KthLargest(int kIn, vector<int>& nums) {
         k = kIn; 
         for (int val: nums){
@@ -16,8 +18,7 @@ public:
             bottom.push(topK.top());
             topK.pop();
         }
-
-        count++;
+        
         return topK.top();
     }
 
@@ -27,7 +28,6 @@ private:
     priority_queue<int, vector<int>, greater<int>> topK;
 
     int k = 0; 
-    int count = 0;
 };
 
 /**
