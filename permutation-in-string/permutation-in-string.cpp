@@ -20,6 +20,7 @@ public:
             for (auto x : letter){
                 if (x != 0){
                     check = false;
+                    break;
                 }
             }
 
