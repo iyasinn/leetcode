@@ -40,9 +40,10 @@ public:
     // }
 
 
-    bool checkInclusion(string s1, string s2) {
+    inline bool checkInclusion(string s1, string s2) {
 
-        if (s2.size() < s1.size()) return false;
+        // if (s2.size() < s1.size()) return false;
+        std::ios_base::sync_with_stdio(false);
 
         int letter1[26] = {};
         int letter2[26] = {};
