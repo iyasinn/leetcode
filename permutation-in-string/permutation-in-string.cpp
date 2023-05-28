@@ -6,6 +6,7 @@ public:
 
         int letter[26] = {};
         int start = 0; 
+        int total = 0; 
 
         for (char x : s1){
             letter[x - 'a']++;
@@ -26,7 +27,7 @@ public:
 
             if (check) return true; 
 
-            cout << start << " " << endl;
+            // cout << start << " " << endl;
             
             
             letter[s2[start] - 'a']++;
