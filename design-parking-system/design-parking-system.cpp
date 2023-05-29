@@ -10,7 +10,7 @@ public:
     }
     
     bool addCar(int carType) {
-        if (arr[carType] <= 0) return false;
+        if (!arr[carType]) return false;
         arr[carType]--;
         return true; 
     }
