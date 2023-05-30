@@ -26,21 +26,26 @@ public:
     // }
 
 
-    bool containsDuplicate(vector<int>& nums) {
+    // bool containsDuplicate(vector<int>& nums) {
 
-        // Set
-        // O(n) insertion, and O(1) retrievl
-        int x; 
+    //     // Set
+    //     // O(n) insertion, and O(1) retrievl
+    //     int x; 
 
-        unordered_set<int> val;
+    //     unordered_set<int> val;
 
-        for (int i = 0; i < nums.size(); i++){
-            if (val.insert(nums[i]).second == false){
-                return true; 
-            }
-        }
+    //     for (int i = 0; i < nums.size(); i++){
+    //         if (val.insert(nums[i]).second == false){
+    //             return true; 
+    //         }
+    //     }
         
-        return false; 
+    //     return false; 
+    // }
+
+    bool containsDuplicate(vector<int>& nums){
+        unordered_set<int> m(nums.begin(), nums.end());
+        return m.size() < nums.size();
     }
 
 
