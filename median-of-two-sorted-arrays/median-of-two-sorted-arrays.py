@@ -5,6 +5,5 @@ class Solution:
         SIZE = len(join)
         if (len(join) % 2 == 0):
             return (join[SIZE // 2] + join[(SIZE // 2) - 1]) / 2
-        
         return join[SIZE // 2]
         
