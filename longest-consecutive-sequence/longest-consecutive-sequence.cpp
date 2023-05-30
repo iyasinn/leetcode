@@ -27,17 +27,22 @@ public:
     //     return best; 
     // }
 
-    int longestConsecutive(vector<int>& nums) {
 
+    //THINK ABOUT PROPERTIES
+    // THINK ABOUT SEQUNcCES OF NUMBERS 
+    // AND WHAT PROPERTIES THEY MAY HAVE 
+
+    int longestConsecutive(vector<int>& nums) {
+        if (nums.empty()) return 0; 
         unordered_set<int> n(nums.begin(), nums.end());
-        int best = 0; 
+        int best = 1; 
 
         for (int i = 0; i < nums.size(); i++){
 
             int count = 1; 
             int curr = nums[i];
 
-            if (n.count(curr - 1)){
+            if (n.count(curr - 1) || !n.count(curr + 1)){
                 continue; 
             }
 
