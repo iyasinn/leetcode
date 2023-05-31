@@ -32,16 +32,15 @@ public:
             else if (i2 < n2.size()){
                 median = n2[i2++];
             }
-
-            if (totalSize % 2 == 0){
-                int curr = std::numeric_limits<int>::max(); 
-                if (i1 < n1.size()) curr = min(curr, n1[i1]);
-                if (i2 < n2.size()) curr = min(curr, n2[i2]);
-                median = (median + curr) / 2.0;
-
-            }
-            
+                   
             left++;
+        }
+
+        if (totalSize % 2 == 0){
+            int curr = std::numeric_limits<int>::max(); 
+            if (i1 < n1.size()) curr = min(curr, n1[i1]);
+            if (i2 < n2.size()) curr = min(curr, n2[i2]);
+            median = (median + curr) / 2.0;
         }
     
         return median; 
