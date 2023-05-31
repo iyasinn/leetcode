@@ -22,7 +22,7 @@ public:
             // at the max we should say at the last index of where we wnat to include
 
             int add = 0; 
-
+            
             if (i1 < n1.size() && i2 < n2.size()){ 
                median = (n1[i1] < n2[i2]) ? n1[i1++] : n2[i2++];
             }
@@ -32,7 +32,7 @@ public:
             else if (i2 < n2.size()){
                 median = n2[i2++];
             }
-                   
+
             left++;
         }
 
