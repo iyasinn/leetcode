@@ -2,7 +2,9 @@ class Solution {
 public:
     vector<vector<int>> threeSum(vector<int>& nums) {
 
-        vector<vector<int>> res; 
+        vector<vector<int>> res;
+        set<vector<int>> sols;
+
         sort(nums.begin(), nums.end());
         int a = 0; 
 
@@ -12,27 +14,21 @@ public:
             int c = nums.size() - 1; 
 
             while (b < c){
-
-                if (nums[a] + nums[b] + nums[c] > 0){
+                int x = nums[a] + nums[b] + nums[c];
+                if (x < 0) b++; 
+                else if (x > 0) c--; 
+                else{
+                    sols.insert({nums[a], nums[b], nums[c]});
+                    b++; 
                     c--; 
-                    continue; 
                 }
-                else if (nums[a] + nums[b] + nums[c] < 0){
-                    b++;
-                    continue; 
-                }
-
-                res.push_back({nums[a], nums[b], nums[c]}); 
-                b++; 
-                c--; 
-                while (b < c && nums[b] == nums[b - 1]) b++; 
-                while (b < c && nums[c] == nums[c + 1]) c--;
             }
-
             a++; 
-            while (a < nums.size() && nums[a] == nums[a - 1]) a++;
         }
 
+        for (auto x : sols){
+            res.push_back(x);
+        }
 
         return res;
     }
