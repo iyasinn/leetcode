@@ -26,8 +26,8 @@ public:
             a++; 
         }
 
-        for (auto x : sols){
-            res.push_back(x);
+        for (auto& x : sols){
+            res.emplace_back(x);
         }
 
         return res;
