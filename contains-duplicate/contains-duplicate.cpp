@@ -51,15 +51,15 @@ public:
     //     return false; 
     // }
 
-    // bool containsDuplicate(vector<int>& nums){
-    //     unordered_set<int> m(nums.begin(), nums.end());
-    //     return m.size() < nums.size();
-    // }
-
     bool containsDuplicate(vector<int>& nums){
         unordered_set<int> m(nums.begin(), nums.end());
-        return m.size() != nums.size();
+        return m.size() < nums.size();
     }
+
+    // bool containsDuplicate(vector<int>& nums){
+    //     unordered_set<int> m(nums.begin(), nums.end());
+    //     return m.size() != nums.size();
+    // }
 
 
 };
