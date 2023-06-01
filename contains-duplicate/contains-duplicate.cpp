@@ -52,8 +52,7 @@ public:
     // }
 
     bool containsDuplicate(vector<int>& nums){
-        unordered_set<int> m(nums.begin(), nums.end());
-        return m.size() != nums.size();
+        return unordered_set<int>(nums.begin(), nums.end()).size() != nums.size();
     }
 
     // bool containsDuplicate(vector<int>& nums){
