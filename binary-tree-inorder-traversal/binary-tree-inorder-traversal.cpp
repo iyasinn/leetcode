@@ -38,11 +38,11 @@ public:
 
 
 
-    vector<int> rec(vector<int> v, TreeNode* root){
-        if (!root) return v;
-        v = rec(v, root->left);
+    vector<int> rec(vector<int>&& v, TreeNode* root){
+        if (!root) return move(v);
+        v = rec(move(v), root->left);
         v.push_back(root->val);
-        v = rec(v, root->right);
+        v = rec(move(v), root->right);
         return move(v);
     }
 
