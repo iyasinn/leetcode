@@ -26,13 +26,27 @@ public:
     // }
 
 
-    vector<int>v;
-    
-    vector<int> inorderTraversal(TreeNode* root) {
-        if(root==NULL)return v;
-        inorderTraversal(root->left);
+    // vector<int>v;
+
+    // vector<int> inorderTraversal(TreeNode* root) {
+    //     if(root==NULL)return v;
+    //     inorderTraversal(root->left);
+    //     v.push_back(root->val);
+    //     inorderTraversal(root->right);
+    //     return std::move(v);
+    // }
+
+
+
+    vector<int> rec(vector<int> v, TreeNode* root){
+        if (!root) return v;
+        v = rec(v, root->left);
         v.push_back(root->val);
-        inorderTraversal(root->right);
-        return v;
+        v = rec(v, root->right);
+        return move(v);
+    }
+
+    vector<int> inorderTraversal(TreeNode* root) {
+        return rec(vector<int>(), root);
     }
 };
