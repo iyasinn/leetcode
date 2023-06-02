@@ -12,16 +12,26 @@
 class Solution {
 public:
 
-    void rec(vector<int>& v, TreeNode* root){
-        if (!root) return;
-        rec(v, root->left);
-        v.push_back(root->val);
-        rec(v, root->right);
-    }
+    // void rec(vector<int>& v, TreeNode* root){
+    //     if (!root) return;
+    //     rec(v, root->left);
+    //     v.push_back(root->val);
+    //     rec(v, root->right);
+    // }
 
+    // vector<int> inorderTraversal(TreeNode* root) {
+    //     vector<int> sol;
+    //     rec(sol, root);
+    //     return sol;
+    // }
+
+
+    vector<int>v;
     vector<int> inorderTraversal(TreeNode* root) {
-        vector<int> sol;
-        rec(sol, root);
-        return sol;
+        if(root==NULL)return v;
+        inorderTraversal(root->left);
+        v.push_back(root->val);
+        inorderTraversal(root->right);
+        return v;
     }
 };
