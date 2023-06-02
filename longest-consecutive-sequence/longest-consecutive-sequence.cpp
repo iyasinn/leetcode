@@ -1,23 +1,23 @@
 class Solution {
 public:
-    int longestConsecutive(vector<int>& nums) {
+    // int longestConsecutive(vector<int>& nums) {
 
-        unordered_set<int> mp(nums.begin(), nums.end());
-        int best = 0; 
-        int curr = 0;
+    //     unordered_set<int> mp(nums.begin(), nums.end());
+    //     int best = 0; 
+    //     int curr = 0;
         
-        for (int n : nums){
-            if (mp.find(n - 1) == mp.end()){
-                curr = 0; 
-                while (mp.count(n)){
-                    n++;
-                    curr++;
-                }
-                best = max(best, curr);
-            }
-        }
-        return best; 
-    }
+    //     for (int n : nums){
+    //         if (mp.find(n - 1) == mp.end()){
+    //             curr = 0; 
+    //             while (mp.count(n)){
+    //                 n++;
+    //                 curr++;
+    //             }
+    //             best = max(best, curr);
+    //         }
+    //     }
+    //     return best; 
+    // }
 
 
     // int longestConsecutive(vector<int>& nums) {        
@@ -38,28 +38,27 @@ public:
     // }
 
 
-    //     int longestConsecutive(vector<int>& nums) {
-    //     if (nums.size() == 0)
-    //         return 0;
+    int longestConsecutive(vector<int>& nums) {
+
+        unordered_set<int> numSet(nums.begin(), nums.end());
+        int maxCount = 0;
         
-    //     unordered_set<int> numSet(nums.begin(), nums.end());
-    //     int maxCount = 1;
-        
-    //     for (int num : numSet) {
-    //         if (numSet.find(num - 1) == numSet.end()) {  // Check if the current element is the start of a subsequence
-    //             int currNum = num;
-    //             int count = 1;
+        for (int num : numSet) {
+            if (numSet.find(num - 1) == numSet.end()) {
+
+                int currNum = num;
+                int count = 1;
                 
-    //             while (numSet.find(currNum + 1) != numSet.end()) {  // Count consecutive elements
-    //                 currNum++;B
-    //                 count++;
-    //             }
-                
-    //             maxCount = max(maxCount, count);  // Update the maximum count
-    //         }
-    //     }
+                while (numSet.find(currNum + 1) != numSet.end()) {
+                    currNum++;
+                    count++;
+                }
         
-    //     return maxCount;
-    // }
+                maxCount = max(maxCount, count);  
+            }
+        }
+        
+        return maxCount;
+    }
 
 };
