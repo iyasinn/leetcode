@@ -5,7 +5,7 @@ public:
         unordered_set<int> mp(nums.begin(), nums.end());
         int best = 0; 
         int curr = 0;
-
+        
         for (int n : nums){
             if (mp.find(n - 1) == mp.end()){
                 curr = 0; 
@@ -51,7 +51,7 @@ public:
     //             int count = 1;
                 
     //             while (numSet.find(currNum + 1) != numSet.end()) {  // Count consecutive elements
-    //                 currNum++;
+    //                 currNum++;B
     //                 count++;
     //             }
                 
