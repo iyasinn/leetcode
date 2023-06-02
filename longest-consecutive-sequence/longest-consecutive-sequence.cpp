@@ -5,7 +5,7 @@ public:
         unordered_set<int> mp(nums.begin(), nums.end());
         int best = 0; 
 
-        for (int& n : nums){
+        for (int n : nums){
             if (mp.find(n - 1) != mp.end()){
                 continue; 
             }
