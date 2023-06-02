@@ -1,7 +1,7 @@
 class Solution {
 public:
     int longestConsecutive(vector<int>& nums) {
-    
+        if (nums.size() <= 1) return nums.size(); 
         unordered_set<int> mp(nums.begin(), nums.end());
         int best = 0; 
 
