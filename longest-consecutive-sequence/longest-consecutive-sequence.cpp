@@ -6,7 +6,7 @@ public:
         unordered_set<int> mp(nums.begin(), nums.end());
         int best = 0; 
 
-        for (int n : nums){
+        for (int& n : nums){
             if (mp.count(n - 1)){
                 continue; 
             }
