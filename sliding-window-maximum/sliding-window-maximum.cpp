@@ -46,7 +46,6 @@ public:
                 continue; 
             }
 
-
             while (pq.top().index < start){
                 pq.pop(); 
             }
