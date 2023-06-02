@@ -46,11 +46,10 @@ public:
         for (int num : numSet) {
             if (numSet.find(num - 1) == numSet.end()) {
 
-                int currNum = num;
                 int count = 1;
                 
-                while (numSet.find(currNum + 1) != numSet.end()) {
-                    currNum++;
+                while (numSet.find(num + 1) != numSet.end()) {
+                    num++;
                     count++;
                 }
         
