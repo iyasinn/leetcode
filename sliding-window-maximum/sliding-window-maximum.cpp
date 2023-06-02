@@ -1,7 +1,7 @@
 class Solution {
 public:
 
-    // O(n * k) 
+    // // O(n * k) 
     // vector<int> maxSlidingWindow(vector<int>& n, int k) {
 
     //     vector<int> res; 
@@ -25,54 +25,65 @@ public:
     //     return res;    
     // }
 
-    struct Element {
-        int val; 
-        int index; 
-    };
+    // ----------------------------------------------
+
+    // struct Element {
+    //     int val; 
+    //     int index; 
+    // };
     
+    // // O(n * log(n))
+    // vector<int> maxSlidingWindow(vector<int>& n, int k) {
+
+    //     vector<int> res; 
+    //     int start = 0; 
+    //     auto comp = [](Element a, Element b){ return a.val <= b.val; };
+    //     priority_queue<Element, vector<Element>, decltype(comp)> pq(comp);
+
+
+    //     for (int end = 0; end < n.size(); end++){
+
+    //         pq.push({n[end], end});
+
+    //         if (end - start + 1 < k){
+    //             continue; 
+    //         }
+
+    //         while (pq.top().index < start){
+    //             pq.pop(); 
+    //         }
+
+    //         res.push_back(pq.top().val);
+    //         start++; 
+    //     }
+
+    //     return res;    
+    // }
+
+
+    // ----------------------------------------------
+    
+    // O(n * log(n))
     vector<int> maxSlidingWindow(vector<int>& n, int k) {
 
         vector<int> res; 
         int start = 0; 
-        auto comp = [](Element a, Element b){ return a.val <= b.val; };
-        priority_queue<Element, vector<Element>, decltype(comp)> pq(comp);
-
+        multiset<int> ms; 
 
         for (int end = 0; end < n.size(); end++){
+            
+            ms.insert(n[end]);
 
-            pq.push({n[end], end});
+            if (end - start + 1 < k){ continue; } 
+            res.push_back(*ms.rbegin());
 
-            if (end - start + 1 < k){
-                continue; 
-            }
-
-            while (pq.top().index < start){
-                pq.pop(); 
-            }
-
-            res.push_back(pq.top().val);
-            start++; 
+            ms.erase(ms.find(n[start]));
+            start++;  
         }
 
         return res;    
     }
 };
-
-
-
-
-
-
-        // for (int i = 0; i < n.size(); i++){
-        //     pq.push({n[i], i});
-        // }
-        // while (!pq.empty()){
-        //     cout << pq.top().index << " " << pq.top().val << endl;
-        //     pq.pop();
-        // }
-
-        // res.push_back(currMax);
-        // count--; 
 
 
 
