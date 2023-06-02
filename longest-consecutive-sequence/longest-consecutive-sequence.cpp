@@ -1,8 +1,7 @@
 class Solution {
 public:
     int longestConsecutive(vector<int>& nums) {
-        
-        // Duplicates dont matter
+    
         unordered_set<int> mp(nums.begin(), nums.end());
         int best = 0; 
 
