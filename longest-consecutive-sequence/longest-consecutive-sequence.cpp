@@ -2,20 +2,19 @@ class Solution {
 public:
     int longestConsecutive(vector<int>& nums) {
 
-        // Pass 1
         unordered_set<int> mp(nums.begin(), nums.end());
         int best = 0; 
-        int curr = 0;
         
         for (int n : nums){
-            if (!mp.count(n - 1)){
-                curr = 0; 
-                while (mp.count(n)){
-                    n++;
-                    curr++;
-                }
-                best = max(best, curr);
+            if (mp.count(n - 1)) continue;
+
+            int curr = 0; 
+
+            while (mp.count(n++)){
+                curr++;
             }
+            best = max(best, curr);
+        
         }
         return best; 
     }
