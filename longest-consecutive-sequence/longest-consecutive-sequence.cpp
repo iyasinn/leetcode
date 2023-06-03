@@ -13,8 +13,8 @@ public:
             while (mp.count(n++)){
                 curr++;
             }
+
             best = max(best, curr);
-        
         }
         return best; 
     }
