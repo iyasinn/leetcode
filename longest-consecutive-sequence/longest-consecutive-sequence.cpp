@@ -1,23 +1,24 @@
 class Solution {
 public:
-    // int longestConsecutive(vector<int>& nums) {
+    int longestConsecutive(vector<int>& nums) {
 
-    //     unordered_set<int> mp(nums.begin(), nums.end());
-    //     int best = 0; 
-    //     int curr = 0;
+        // Pass 1
+        unordered_set<int> mp(nums.begin(), nums.end());
+        int best = 0; 
+        int curr = 0;
         
-    //     for (int n : nums){
-    //         if (mp.find(n - 1) == mp.end()){
-    //             curr = 0; 
-    //             while (mp.count(n)){
-    //                 n++;
-    //                 curr++;
-    //             }
-    //             best = max(best, curr);
-    //         }
-    //     }
-    //     return best; 
-    // }
+        for (int n : nums){
+            if (!mp.count(n - 1)){
+                curr = 0; 
+                while (mp.count(n)){
+                    n++;
+                    curr++;
+                }
+                best = max(best, curr);
+            }
+        }
+        return best; 
+    }
 
 
     // int longestConsecutive(vector<int>& nums) {        
@@ -38,26 +39,26 @@ public:
     // }
 
 
-    int longestConsecutive(vector<int>& nums) {
+    // int longestConsecutive(vector<int>& nums) {
 
-        unordered_set<int> numSet(nums.begin(), nums.end());
-        int maxCount = 0;
+    //     unordered_set<int> numSet(nums.begin(), nums.end());
+    //     int maxCount = 0;
         
-        for (int num : numSet) {
-            if (numSet.find(num - 1) == numSet.end()) {
+    //     for (int num : numSet) {
+    //         if (!numSet.) {
 
-                int count = 1;
+    //             int count = 1;
                 
-                while (numSet.find(num + 1) != numSet.end()) {
-                    num++;
-                    count++;
-                }
+    //             while (numSet.find(num + 1) != numSet.end()) {
+    //                 num++;
+    //                 count++;
+    //             }
         
-                maxCount = max(maxCount, count);  
-            }
-        }
+    //             maxCount = max(maxCount, count);  
+    //         }
+    //     }
         
-        return maxCount;
-    }
+    //     return maxCount;
+    // }
 
 };
