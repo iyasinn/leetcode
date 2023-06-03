@@ -1,79 +1,30 @@
 class Solution {
 public:
-    // bool checkInclusion(string s1, string s2) {
+    bool checkInclusion(string s1, string s2) {
 
-    //     if (s2.size() < s1.size()) return false;
+        // Max size is 26
+        vector<int> arr1(26, 0); 
+        for (char c : s1){ arr1[c - 'a']++; }
 
-    //     int letter[26] = {};
-    //     int start = 0; 
-    //     int total = 0; 
+        vector<int> arr2(26, 0);
 
-    //     for (char x : s1){
-    //         letter[x - 'a']++;
-    //     }
-
-    //     for (int end = 0; end < s2.size(); end++){
-
-    //         letter[s2[end] - 'a']--;
-    //         if (end - start + 1 != s1.size()){ continue; }
-
-    //         bool check = true; 
-    //         for (auto x : letter){
-    //             if (x != 0){
-    //                 check = false;
-    //                 break;
-    //             }
-    //         }
-
-    //         if (check) return true; 
-
-    //         cout << start << " " << endl;
-            
-            
-    //         letter[s2[start] - 'a']++;
-    //         start++; 
-    //     }
-
-
-
-    //     return false;    
-    // }
-
-
-    inline bool checkInclusion(string s1, string s2) {
-
-        // if (s2.size() < s1.size()) return false;
-        std::ios_base::sync_with_stdio(false);
-
-        int letter1[26] = {};
-        int letter2[26] = {};
-
-        // array<int, 26> letter1 = {};
-        // array<int, 26> letter2 = {};
-        int start = 0; 
-
-        for (char x : s1){
-            letter1[x - 'a']++;
-        }
+        int start = 0;
 
         for (int end = 0; end < s2.size(); end++){
 
-            letter2[s2[end] - 'a']++;
-            if (end - start + 1 != s1.size()){ continue; }
+            arr2[s2[end] - 'a']++; 
 
-            if (equal(std::begin(letter1), std::end(letter1), std::begin(letter2))){
-            // if (letter1 == letter2){
-                return true; 
+            if (end - start + 1 < s1.size()){
+                continue; 
             }
 
-            letter2[s2[start] - 'a']--;
+            if (arr1 == arr2) return true; 
+
+            arr2[s2[start] - 'a']--; 
             start++; 
         }
 
-
-
-        return false;    
+        return false; 
+        
     }
-
-
 };
