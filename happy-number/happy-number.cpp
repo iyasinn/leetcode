@@ -13,10 +13,11 @@ public:
 
     bool isHappy(int n) {
         unordered_set<int> s; 
-        while (!s.count(n)){
+        while (true){
             s.insert(n);
             n = sumSquareDigits(n);
-            if (n == 1) return true; 
+            if (n == 1){ return true; }
+            if (s.count(n)){ break; }
         }
         return false; 
     }              
