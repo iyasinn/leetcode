@@ -8,7 +8,7 @@ public:
             mp[arr].push_back(s);
         }
         vector<vector<string>> sol;
-        for (auto& vec : mp){
+        for (auto&& vec : mp){
             sol.push_back(vec.second);
         }
         return sol; 
