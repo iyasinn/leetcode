@@ -11,13 +11,13 @@ public:
 
         vector<string> sols;
 
-        // stack<Cont> bfs; 
-        queue<Cont> bfs; 
+        stack<Cont> bfs; 
+        // queue<Cont> bfs; 
         bfs.push({1, "("});
 
         while (!bfs.empty()){
 
-            Cont top = bfs.front();
+            Cont top = bfs.top();
             bfs.pop();
 
             if (top.s.size() != n * 2){
