@@ -17,7 +17,6 @@ public:
         while (!bfs.empty()){
 
             Cont top = bfs.top();
-            cout << top.s << endl;
             bfs.pop();
 
             if (top.s.size() != n * 2){
