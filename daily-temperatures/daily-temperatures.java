@@ -15,8 +15,6 @@ class Solution {
             sols[stack.peek()] = 0; 
             stack.pop();
         }
-
-
         return sols;
     }
 }
