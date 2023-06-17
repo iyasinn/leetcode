@@ -19,11 +19,9 @@ public:
         while (start <= end){
 
             int mid = start + (end - start) / 2;
-
-            cout << mid << endl;
-
+        
             if (works(piles, mid, h)){
-                best = min(best, mid);
+                best = mid;
                 end = mid - 1; 
             }
             else {
