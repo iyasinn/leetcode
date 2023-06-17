@@ -39,6 +39,9 @@ public:
                 sol = min(sol, nums[mid]);
                 end = mid - 1; 
             }
+            else {
+                return nums[mid];
+            }
         }
         return sol; 
         
