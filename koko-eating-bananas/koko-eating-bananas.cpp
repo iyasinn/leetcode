@@ -19,7 +19,8 @@ public:
         while (start <= end){
 
             int mid = start + (end - start) / 2;
-        
+            
+            // If it works, we only try a smaller range
             if (works(piles, mid, h)){
                 best = mid; 
                 end = mid - 1; 
