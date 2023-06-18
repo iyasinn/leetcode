@@ -24,23 +24,22 @@ public:
 
         int start = 0; 
         int end = nums.size() - 1; 
-        int sol = numeric_limits<int>::max();
+        int sol = nums[0];
 
         while (start <= end){
-            
+            // If we reach the sorted array
+            if (nums[start] < nums[end]){
+                return min(sol, nums[start]);
+            }
             int mid = start + (end - start) / 2; 
-
             // In this case, we know the upper portion is out of sort
+            // That means we are in the rotated part of the array 
             if (nums[mid] > nums[end]){
                 start = mid + 1; 
             }
-            // Here, it is in order, so we check the lower half of it now
-            else if (nums[mid] <= nums[end]){
+            else {
                 sol = min(sol, nums[mid]);
                 end = mid - 1; 
-            }
-            else {
-                return nums[mid];
             }
         }
         return sol; 
