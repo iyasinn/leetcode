@@ -31,15 +31,14 @@ public:
             if (nums[start] < nums[end]){
                 return min(sol, nums[start]);
             }
-            int mid = start + (end - start) / 2; 
-            // In this case, we know the upper portion is out of sort
-            // That means we are in the rotated part of the array 
-            if (nums[mid] > nums[end]){
-                start = mid + 1; 
+            int mid = start + (end - start) / 2;
+            sol = min(sol, nums[mid]);
+
+            if (nums[mid] < nums[start]){
+                end = mid - 1;  
             }
             else {
-                sol = min(sol, nums[mid]);
-                end = mid - 1; 
+                start = mid + 1; 
             }
         }
         return sol; 
