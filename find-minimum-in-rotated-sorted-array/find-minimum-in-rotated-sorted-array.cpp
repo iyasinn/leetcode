@@ -33,7 +33,7 @@ public:
             }
             int mid = start + (end - start) / 2;
             sol = min(sol, nums[mid]);
-
+             
             if (nums[mid] < nums[start]){
                 end = mid - 1;  
             }
