@@ -20,6 +20,30 @@ public:
 
     */
 
+    // int findMin(vector<int>& nums) {
+
+    //     int start = 0; 
+    //     int end = nums.size() - 1; 
+    //     int sol = nums[0];
+
+    //     while (start <= end){
+    //         // If we reach the sorted array
+    //         if (nums[start] < nums[end]){
+    //             return min(sol, nums[start]);
+    //         }
+    //         int mid = start + (end - start) / 2;
+    //         sol = min(sol, nums[mid]);
+             
+    //         if (nums[mid] < nums[start]){
+    //             end = mid - 1;  
+    //         }
+    //         else {
+    //             start = mid + 1; 
+    //         }
+    //     }
+    //     return sol; 
+    // }
+
     int findMin(vector<int>& nums) {
 
         int start = 0; 
@@ -27,23 +51,20 @@ public:
         int sol = nums[0];
 
         while (start <= end){
-            // If we reach the sorted array
-            if (nums[start] < nums[end]){
-                return min(sol, nums[start]);
-            }
+
             int mid = start + (end - start) / 2;
             sol = min(sol, nums[mid]);
              
-            if (nums[mid] < nums[start]){
-                end = mid - 1;  
+            if (nums[mid] > nums[end]){
+                // sol = min(sol, nums[mid]);
+                start = mid + 1; 
             }
             else {
-                start = mid + 1; 
+                end = mid - 1; 
             }
         }
         return sol; 
     }
-
 
 
 };
