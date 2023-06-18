@@ -48,22 +48,28 @@ public:
 
         int start = 0; 
         int end = nums.size() - 1; 
-        int sol = nums[0];
+        int sol = 0; 
 
         while (start <= end){
 
             int mid = start + (end - start) / 2;
-            sol = min(sol, nums[mid]);
+            // Checking at eveyr itartion is essential
+
+            if (nums[mid] < nums[sol]){
+                sol = mid; 
+            }
              
+             // Not in order, so check upper alf
             if (nums[mid] > nums[end]){
                 // sol = min(sol, nums[mid]);
                 start = mid + 1; 
             }
+            // In order, so check lower half of inorder
             else {
                 end = mid - 1; 
             }
         }
-        return sol; 
+        return nums[sol]; 
     }
 
 
