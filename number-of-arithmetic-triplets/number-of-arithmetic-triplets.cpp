@@ -5,7 +5,7 @@ public:
     // M: 
     // We can have a set of all integers
     // And then we can find some O(n) solution that would let us find the perfect j value 
-    // 
+    // Usually storing all numbers in a set is good 
 
     // O(n^3) 
     // int arithmeticTriplets(vector<int>& nums, int diff) {
@@ -22,22 +22,36 @@ public:
     //     return count; 
     // }
 
+    // O(n^2) solution
+    // int arithmeticTriplets(vector<int>& nums, int diff) {
+
+    //     unordered_set<int> s(nums.begin(), nums.end());
+
+    //     int count = 0; 
+    //     for (int i = 0; i < nums.size(); i++){
+    //         for (int k = i + 2; k < nums.size(); k++){
+    //             int j = nums[i] + diff; 
+    //             if (j == nums[k] - diff && s.count(j)){
+    //                 count++;
+    //             }
+    //         }
+    //     }
+    //     return count; 
+    // }
 
     int arithmeticTriplets(vector<int>& nums, int diff) {
 
         unordered_set<int> s(nums.begin(), nums.end());
-
+        
         int count = 0; 
-        for (int i = 0; i < nums.size(); i++){
-            for (int k = i + 2; k < nums.size(); k++){
-                int j = nums[i] + diff; 
-                if (j == nums[k] - diff && s.count(j)){
-                    count++;
-                }
+        for (int j = 0; j < nums.size(); j++){ 
+            if (s.count(nums[j] - diff) && s.count(nums[j] + diff)){
+                count++; 
             }
         }
         return count; 
     }
+
 
 };
 
