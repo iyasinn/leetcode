@@ -34,15 +34,13 @@ public:
     //     return head; 
     // }
 
+
+    // Dummy node solution
     ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
 
         if (!list1 || !list2) return (list1) ? list1 : list2;
-        
-        if (list1->val > list2->val) swap(list1, list2);
         ListNode* ans = new ListNode(); 
         ListNode* curr = ans; 
-
-        // The dummy node makes us always be ONE number behind
 
         while (list1 && list2){
             if (list1->val < list2->val){
