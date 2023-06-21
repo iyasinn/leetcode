@@ -19,14 +19,14 @@ public:
         // const pair<int, string>& a, const pair<int, string>& b) { return a.first < b.first; });
         // return it == data[key].begin() ? "" : prev(it)->second;
 
-        auto it = upper_bound(vec.begin(), vec.end(), pair<int, string>({timestamp, ""}), 
+        auto it = lower_bound(vec.rbegin(), vec.rend(), pair<int, string>({timestamp, ""}), 
                               [](const pair<int, string> a, const pair<int, string> b)
                                 {
-                                    return a.first < b.first;
+                                    return a.first > b.first;
                                 });
 
-        return (it == data[key].begin()) ? "" : prev(it)->second;
-        // return (it != vec.end()) ? it->second : ""; 
+        // return (it == data[key].begin()) ? "" : prev(it)->second;
+        return (it != vec.rend()) ? it->second : ""; 
             
     }
 };
