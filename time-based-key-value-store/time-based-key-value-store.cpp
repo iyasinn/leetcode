@@ -1,5 +1,6 @@
 class TimeMap {
 public:
+
     unordered_map<string, map<int, string, greater<int>>> data;
     TimeMap() {
     }
@@ -17,15 +18,7 @@ public:
         auto it = m.lower_bound(timestamp);
         if (it == m.end()) return "";
         return it->second; 
-        
-        // while (timestamp >= 1){
-        //     if (data[key].count(timestamp)){
-        //         return data[key][timestamp];
-        //     }
-        //     timestamp--;
-        // }
-        // return "";
-        
+            
     }
 };
 
