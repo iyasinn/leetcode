@@ -33,21 +33,30 @@ public:
             fast = fast->next->next; 
         }
 
-        slow = slow->next; 
-        while (slow){
-            s.push(slow);
-            slow = slow->next; 
-        }
 
-        while (!s.empty()){
-            ListNode* temp = head->next; 
-            head->next = s.top();
-            head = head->next; 
-            head->next = temp; 
-            head = head->next; 
-            s.pop();
+        ListNode* temp = slow->next; 
+        slow->next = nullptr; 
+        slow = temp; 
+
+        ListNode* prev = nullptr;
+        while (slow){
+            ListNode* temp = slow->next; 
+            slow->next = prev; 
+            prev = slow; 
+            slow = temp; 
         }
-        head->next = nullptr; 
+        slow = prev; 
+
+
+        while (slow){
+            ListNode* t1 = head->next;
+            ListNode* t2 = slow->next; 
+            head->next = slow; 
+            slow->next = t1; 
+            head = t1; 
+            slow = t2; 
+        }
+        // head->next = nullptr; 
     }
 };
 
