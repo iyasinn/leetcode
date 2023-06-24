@@ -40,9 +40,6 @@ public:
         }
 
         while (!s.empty()){
-            if (!head) cout << " hello no head here\n";
-            else if (!head->next) cout << "No head next\n";
-            if (!s.top()) cout << "no s.top that's valid\n";
             ListNode* temp = head->next; 
             head->next = s.top();
             head = head->next; 
