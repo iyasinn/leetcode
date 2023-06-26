@@ -36,25 +36,12 @@ public:
             n--;
         }
 
-        cout << sol->val << endl;
-
-        ListNode* lol = dummy; 
-        while (lol){ cout << lol->val << endl; lol=lol->next; }
-
-        cout << endl << endl;
-
         ListNode* temp = sol->next->next; 
         sol->next = temp; 
-        // delete dummy; 
-        // sol->next = sol->next->next;
-
-        lol = dummy; 
-        while (lol){ cout << lol->val << endl; lol=lol->next; }
 
         head = dummy->next; 
         head = reverseList(head);
         delete dummy;
-    
         return head; 
 
     }
