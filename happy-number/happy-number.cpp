@@ -17,8 +17,6 @@ public:
         int start = n;
         int end = calcSum(calcSum(n));
 
-        if (end == 1) return true; 
-
         while (start != end){
             start = calcSum(start);
             end = calcSum(calcSum(end));
@@ -26,6 +24,6 @@ public:
             if (end == 1 || start == 1) return true;
         }
 
-        return false; 
+        return end == 1; 
     }
 };
