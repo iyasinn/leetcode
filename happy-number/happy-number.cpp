@@ -1,22 +1,31 @@
 class Solution {
-public:                 
+public:
 
+    // we can view the movement of this number as a graph
 
-    int sumSquareDigits(int n){
-        int total = 0; 
-        string x = to_string(n);
-        for (auto i : x){
-            total += ((i - '0') * (i - '0'));
+    int calcSum(int n){
+        int sum = 0;
+        while (n){
+            sum += (n % 10) * (n % 10);
+            n = n / 10;
         }
-        return total; 
+        return sum;
     }
 
+
     bool isHappy(int n) {
-        unordered_set<int> s; 
-        while (n != 1 && !s.count(n)){
-            s.insert(n);
-            n = sumSquareDigits(n);
+        int start = n;
+        int end = calcSum(calcSum(n));
+
+        if (end == 1) return true; 
+
+        while (start != end){
+            start = calcSum(start);
+            end = calcSum(calcSum(end));
+
+            if (end == 1 || start == 1) return true;
         }
-        return n == 1; 
-    }              
+
+        return false; 
+    }
 };
