@@ -20,8 +20,8 @@ public:
         while (start != end){
             start = calcSum(start);
             end = calcSum(calcSum(end));
-
-            if (end == 1 || start == 1) return true;
+            
+            if (end == 1) return true;
         }
 
         return end == 1; 
