@@ -18,18 +18,28 @@
 class Solution {
 public:
 
-    void dfs(TreeNode* root, vector<int>& arr){
-        if (!root){
-            return; 
-        }
-        dfs(root->left, arr);
-        arr.push_back(root->val);
-        dfs(root->right, arr);
-    }
-
     int kthSmallest(TreeNode* root, int k) {
-        vector<int> arr; 
-        dfs(root, arr);
-        return arr[k - 1];
+        stack<TreeNode*> s; 
+        int processed = 0; 
+        s.push(root);
+        while (!s.empty()){
+            TreeNode* top = s.top();
+            s.pop();
+            if (top->left){
+                s.push(top);
+                s.push(top->left);
+                top->left = nullptr; 
+                continue; 
+            }
+            processed += 1; 
+            if (processed == k){
+                return top->val;
+            }
+            if (top->right){
+                s.push(top->right);
+            }
+
+        }
+        return 0;
     }
 };
