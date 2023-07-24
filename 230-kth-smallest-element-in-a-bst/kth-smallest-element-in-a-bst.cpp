@@ -13,27 +13,23 @@
  // Put all elements into a min heap to get the kth smallest element
  // Put all elements into a vector and then sort 
  // COunting sort not good cuz no frequency  here
+ // Prioritie queues are usually best for the kth smallest element
+ // In order traversal of a Binary Search Tree will ALWAYS give you a sorted array 
 class Solution {
 public:
 
-    void dfs(TreeNode* root, priority_queue<int, vector<int>, greater<int>>& pq){
+    void dfs(TreeNode* root, vector<int>& arr){
         if (!root){
             return; 
         }
-        pq.push(root->val);
-        dfs(root->left, pq);
-        dfs(root->right, pq);
+        dfs(root->left, arr);
+        arr.push_back(root->val);
+        dfs(root->right, arr);
     }
 
     int kthSmallest(TreeNode* root, int k) {
-        priority_queue<int, vector<int>, greater<int>> pq;
-        dfs(root, pq);
-
-        while (k > 1){
-            pq.pop();
-            k--;
-        }
-
-        return pq.top();
+        vector<int> arr; 
+        dfs(root, arr);
+        return arr[k - 1];
     }
 };
