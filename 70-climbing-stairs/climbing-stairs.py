@@ -6,15 +6,13 @@ class Solution:
 
     def climbStairs(self, n: int) -> int:
 
-        if (n == 1): 
-            return 1
-        elif (n == 2): 
-            return 2
-        
-        first = 1
-        end = 2
+        if (n <= 2): 
+            return n
 
-        for x in range(3, n + 1):
+        first = 1
+        end = 1
+
+        for x in range(2, n + 1):
             temp = end
             end += first 
             first = temp
