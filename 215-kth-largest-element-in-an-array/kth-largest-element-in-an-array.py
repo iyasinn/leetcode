@@ -9,6 +9,8 @@ class Solution:
     # Find frequency in O(n). Then put in buckets 
     # Then go backwards in O(k) time to find the kth largest element
     # We will do both implementations
+    # Actually bucket sort will not work because we need the buckets to be the value of the elements rather than frequency, and that cause sissus because that would hav eexponential siz ecompleixty
+
     def findKthLargest(self, nums: List[int], k: int) -> int:
 
         maxHeap = [-1 * element for element in nums]
@@ -21,3 +23,4 @@ class Solution:
         
         return heapq.heappop(maxHeap) * -1
 
+    
