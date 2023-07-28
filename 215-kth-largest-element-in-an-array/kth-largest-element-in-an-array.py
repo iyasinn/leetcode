@@ -25,32 +25,22 @@ class Solution:
 
     def findKthLargest(self, nums: List[int], k: int) -> int:
 
-        frequency = defaultdict(int)
         maxVal = nums[0]
         minVal = nums[0]
 
         for n in nums: 
             maxVal = max(maxVal, n)
             minVal = min(minVal, n)
-            frequency[n] += 1
+
+        size = maxVal - minVal 
+        bucket = [0 for _ in range(size + 1)]
         
-        diff = (minVal * -1) if minVal < 0 else 0
+        for num in nums: 
+            bucket[num - minVal] += 1 
 
-        bucket = [0 for _ in range(maxVal + diff + 1)]
-
-        for key, val in frequency.items(): 
-            bucket[key + diff] = val 
-
-        print(bucket)
-        print(diff)
-
-        # Index is the value
-        # i = diff gives you the actual value
         for i in range(len(bucket) - 1, -1, -1):
-            
             if (bucket[i] >= k):
-                return i - diff
-
+                return i + minVal
             k -= bucket[i]
         
         return -1
