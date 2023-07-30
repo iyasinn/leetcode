@@ -8,7 +8,6 @@ class Solution:
         # [start, end]
         start = 0
         end = x
-        best = float('inf')
 
         while (start <= end): 
 
