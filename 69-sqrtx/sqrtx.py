@@ -15,9 +15,6 @@ class Solution:
             mid = (end + start) // 2 
             square = mid * mid 
 
-            # square = mid * mid
-            # mid is the square root
-
             if (square < x):
                 best = mid 
                 start = mid + 1
@@ -27,4 +24,4 @@ class Solution:
                 return mid
 
         
-        return best
+        return end
