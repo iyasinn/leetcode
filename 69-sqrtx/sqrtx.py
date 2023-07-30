@@ -16,12 +16,10 @@ class Solution:
             square = mid * mid 
 
             if (square < x):
-                best = mid 
                 start = mid + 1
             elif (square > x): 
                 end = mid - 1
             else: 
                 return mid
-
         
         return end
