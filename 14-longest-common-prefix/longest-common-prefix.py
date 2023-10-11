@@ -16,9 +16,8 @@ class Solution:
                 word = strs[j]
                 if len(word) <= i or word[i] != letter: 
                     return prefix 
-            
+                    
             prefix += letter
-
         
         return prefix
 
