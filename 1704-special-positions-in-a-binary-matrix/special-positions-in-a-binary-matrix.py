@@ -12,7 +12,7 @@ class Solution:
 
         for i, row in enumerate(mat): 
             for j, num in enumerate(row): 
-                if num == 1 and row_mark[i] == col_mark[j] == 1: 
+                if num == row_mark[i] == col_mark[j] == 1: 
                     count += 1
   
         return count
