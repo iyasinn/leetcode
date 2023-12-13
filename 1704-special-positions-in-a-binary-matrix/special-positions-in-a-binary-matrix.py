@@ -6,9 +6,8 @@ class Solution:
 
         for i, row in enumerate(mat): 
             for j, num in enumerate(row): 
-                if num == 1: 
-                    row_mark[i] += 1
-                    col_mark[j] += 1
+                row_mark[i] += num
+                col_mark[j] += num
 
         for i, row in enumerate(mat): 
             for j, num in enumerate(row): 
