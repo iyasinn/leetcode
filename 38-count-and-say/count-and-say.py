@@ -5,21 +5,21 @@ class Solution:
 
         data = self.countAndSay(n - 1)
 
-        start = 0 
-        end = 1
-        curr_num = data[0]
+
+        count = 1
+        num = data[0]
+
         output = ""
 
-        while end < len(data): 
-            if data[end] != curr_num:
-                count = str(end - start)
-                output += count + curr_num
-                curr_num = data[end]
-                start = end
-            end += 1
+        for i in range(1, len(data)):  
+            if data[i] != num: 
+                output += str(count) + str(num)
+                count = 1
+                num = data[i]
+            else: 
+                count += 1
             
-        count = str(end - start)
-        output += count + curr_num
+        output += str(count) + str(num)
 
         return output
 
