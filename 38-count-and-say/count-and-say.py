@@ -12,12 +12,12 @@ class Solution:
 
         while end < len(data): 
             if data[end] != curr_num:
-                if curr_num is not None:  
-                    count = str(end - start)
-                    output += count + curr_num
+                count = str(end - start)
+                output += count + curr_num
                 curr_num = data[end]
                 start = end
             end += 1
+            
         count = str(end - start)
         output += count + curr_num
 
