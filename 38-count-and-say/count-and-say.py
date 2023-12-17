@@ -1,14 +1,13 @@
 class Solution:
     def countAndSay(self, n: int) -> str:
-
         if n == 1: 
             return '1'
 
         data = self.countAndSay(n - 1)
 
         start = 0 
-        end = 0
-        curr_num = None
+        end = 1
+        curr_num = data[0]
         output = ""
 
         while end < len(data): 
