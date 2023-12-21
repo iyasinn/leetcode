@@ -46,8 +46,9 @@ class Solution:
     def dp(self, floor, index, numCarpets, memo): 
         if (index, numCarpets) in memo: 
             return memo[(index, numCarpets)]
-        if index < 0: 
+        elif index < 0: 
             return 0
+
         if floor[index] == '0':
             return self.dp(floor, index - 1, numCarpets, memo)
             
@@ -58,7 +59,6 @@ class Solution:
             place_carpet = self.dp(floor, index - self.carpetLen, numCarpets - 1, memo)
 
         memo[(index, numCarpets)] = min(no_place, place_carpet)
-
         return memo[(index, numCarpets)] 
         
 
