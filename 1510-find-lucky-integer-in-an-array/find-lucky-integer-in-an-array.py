@@ -5,8 +5,9 @@ class Solution:
             freq[num] = freq.get(num, 0) + 1
         
         
-        for key, val in reversed(sorted(freq.items())): 
+        best = -1
+        for key, val in freq.items(): 
             if key == val: 
-                return key
+                best = max(best, key)
 
-        return -1
+        return best
