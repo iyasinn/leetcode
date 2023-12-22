@@ -21,17 +21,20 @@ GO through test case
 011101
 
 
+30:00
+Realized the best method is to simply consider all the substrings. There will always be a left and a right portion, so we can simply just consider that
+
+
 """
 
 class Solution:
     def maxScore(self, s: str) -> int:
         # Assume all the 1's are in the right, and we have zero 0's in the left
-        num_zero = (s[0] == '0')
-        num_one = s[1::].count('1')
-        best_score = num_zero + num_one
+        num_zero = 0
+        num_one = s.count('1')
+        best_score = -1
 
-        for i in range(1, len(s) - 1):
-
+        for i in range(len(s) - 1):
             num_zero += (1 if s[i] == '0' else 0)
             num_one  += (-1 if s[i] == '1' else 0)
             best_score = max(best_score, num_zero + num_one)
