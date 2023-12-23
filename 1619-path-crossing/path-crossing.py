@@ -12,9 +12,11 @@ class Solution:
         solution = False
 
         for direction in path: 
+            if solution: 
+                return True
             positions.add((x, y))
             x += move[direction][0]
             y += move[direction][1]
             solution = solution or (x, y) in positions
-        
+
         return solution
