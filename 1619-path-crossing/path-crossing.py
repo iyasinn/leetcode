@@ -9,12 +9,12 @@ class Solution:
         move = {"N": (0, 1), "S": (0, -1), "E": (1, 0), "W": (-1, 0)}
 
         x = y = 0
+        solution = False
 
         for direction in path: 
-            if (x, y) in positions: 
-                return True
             positions.add((x, y))
             x += move[direction][0]
             y += move[direction][1]
+            solution = solution or (x, y) in positions
         
-        return (x, y) in positions
+        return solution
