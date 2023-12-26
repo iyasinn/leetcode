@@ -11,7 +11,7 @@ def dp(n, k, target, curr):
     ways = 0 
     for i in range(1, min(k, target - curr) + 1):
         ways += dp(n - 1, k, target, curr + i)
-        ways % MODULO
+        # ways % MODULO
     
     return ways % MODULO
 
