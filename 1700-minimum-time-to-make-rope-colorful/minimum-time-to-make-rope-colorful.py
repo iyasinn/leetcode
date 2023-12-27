@@ -25,9 +25,8 @@ class Solution:
             window_time = window_max = neededTime[end]
             start = end
 
-        print(start, end, window_time, window_max, time)
-        if start < end: 
-            time += (window_time - window_max)
+        # This will be zero if start == end    
+        time += (window_time - window_max)
         
         return time
 
