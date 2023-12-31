@@ -3,8 +3,7 @@ class Solution:
         solution = -1
         freq = {}
         for i, char in enumerate(s): 
-            freq[char] = freq.get(char, i)
-            solution = max(solution, i - freq[char] - 1)
+            solution = max(solution, i - (freq.setdefault(char, i)) - 1)
         return solution 
 
 
