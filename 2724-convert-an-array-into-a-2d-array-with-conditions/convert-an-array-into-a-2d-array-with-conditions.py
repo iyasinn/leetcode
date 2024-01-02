@@ -9,7 +9,8 @@ O(n) rows
 
 If n = 1 type of elements, then numRows = n, so O(n) complexity
 if n = distinct n elements, then numRows = 1, so O(n) complexity
-Can it be O(n^2)
+Can it be O(n^2)? I'm not sure
+
 """
 
 class Solution:
