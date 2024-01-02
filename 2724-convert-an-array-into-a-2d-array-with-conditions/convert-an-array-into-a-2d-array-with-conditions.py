@@ -23,7 +23,7 @@ We can just need to know which index to push to
 The hashmap could theoretically store this
 
 
-
+here, frequency = the row you have to put this into 
 
 """
 
@@ -32,16 +32,14 @@ The hashmap could theoretically store this
 class Solution:
     def findMatrix(self, nums: List[int]) -> List[List[int]]:
         output = []
-        pos = {}
+        freq = {}
 
         for n in nums: 
-            pos[n] = pos.get(n, 0)
-
-            if pos[n] >= len(output): 
+            if freq.setdefault(n, 0) >= len(output):
                 output.append([])
-            
-            output[pos[n]].append(n)
-            pos[n] += 1
+
+            output[freq[n]].append(n)
+            freq[n] += 1
 
         return output
 
