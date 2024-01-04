@@ -15,6 +15,13 @@ Maybe proof by induction can posit the truth for this?
 
 7 -> 3
 
+3k -> k operations
+3k + 1
+k - 1 3s, and a 2
+
+3k + 2
+k 3s, and a 2
+
 
 How to moe every number ot 3
 
@@ -42,12 +49,10 @@ class Solution:
             freq[num] = freq.get(num, 0) + 1
 
         moves = 0
-
-        for count in freq.values(): 
-            if count > 3: 
-                moves += ceil(count / 3)
-            elif count >= 2: 
-                moves += 1
+        
+        for key, count in freq.items(): 
+            if count != 1: 
+                moves += ((count + 2) // 3)
             else: 
                 return -1
         return moves
