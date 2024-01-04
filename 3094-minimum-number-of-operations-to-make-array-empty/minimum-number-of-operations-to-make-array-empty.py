@@ -20,6 +20,13 @@ How to moe every number ot 3
 
 For any number n, itr is going to be  ceil(n / 3)
 
+Prrof that T(n) = ceil(n / 3)
+
+T(2) = 1
+T(3) = 1
+
+ceil(n / 3)
+
 
 
 
@@ -35,13 +42,12 @@ class Solution:
             freq[num] = freq.get(num, 0) + 1
 
         moves = 0
-        print(freq)
 
         for count in freq.values(): 
-            if count == 2 or count == 3: 
-                moves += 1
-            elif count > 3: 
+            if count > 3: 
                 moves += ceil(count / 3)
+            elif count >= 2: 
+                moves += 1
             else: 
                 return -1
         return moves
