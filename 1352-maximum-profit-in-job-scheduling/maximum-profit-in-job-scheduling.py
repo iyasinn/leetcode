@@ -34,6 +34,10 @@ How do we get next intervals in this ordering
 20 -> go thru all remainign ones and make sure next start is after the current end
 
 
+
+The issue with the LIS approach is that we don't want O(n^2) to keep iterating through the array. We cant make our problem ENDING at an index
+We have to make including or excluding
+
 """
 
 
