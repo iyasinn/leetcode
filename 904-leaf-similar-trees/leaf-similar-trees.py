@@ -5,26 +5,29 @@
 #         self.left = left
 #         self.right = right
 
-def rec(root, seq): 
+def rec(root, seq, remove=False): 
     if root is None: 
         return 
     
-    rec(root.left, seq)
-    rec(root.right, seq)
+    rec(root.left, seq, remove)
+    rec(root.right, seq, remove)
 
     if root.left is None and root.right is None:
-        seq.append(root.val)
+        if remove and len(seq) > 0 and root.val == seq[-1]: 
+            seq.pop()
+        else: 
+            seq.append(root.val)
     
+    return seq
 
 class Solution:
     def leafSimilar(self, root1: Optional[TreeNode], root2: Optional[TreeNode]) -> bool:
         
-        seq1 = []
-        seq2 = []
-        rec(root1, seq1)
-        rec(root2, seq2)
+        seq = []
+        rec(root1, seq)
+        seq = seq[::-1]
+        rec(root2, seq, True)
 
-        # print(seq1)
-        # print(seq2)
+        print(seq)
 
-        return seq1 == seq2
+        return len(seq) == 0
