@@ -6,8 +6,7 @@ class Solution:
 
     def climbStairs(self, n: int) -> int:
 
-        first = 1
-        second = 1
+        first, second = 1, 1
 
         for _ in range(1, n): 
             first, second = second, first
