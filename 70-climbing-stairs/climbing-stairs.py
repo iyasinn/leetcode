@@ -5,12 +5,8 @@ class Solution:
     # rec(2) = 2
 
     def climbStairs(self, n: int) -> int:
-
-        first, second = 1, 1
-
+        dp = [1, 1]
         for _ in range(1, n): 
-            first, second = second, first
-            second += first
+          dp = [dp[1], dp[0] + dp[1]]
         
-        return second
-
+        return dp[1]
