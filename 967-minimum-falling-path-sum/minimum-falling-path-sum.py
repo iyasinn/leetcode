@@ -1,19 +1,20 @@
 class Solution:
     def minFallingPathSum(self, matrix: List[List[int]]) -> int:
 
-        dp = [copy.deepcopy(row) for row in matrix]
+        if len(matrix) == len(matrix[0]) == 1: 
+            return matrix[0][0]
+
+
+        dp = [copy.deepcopy(matrix[-2]), copy.deepcopy(matrix[-1])]
 
         for row in range(len(matrix) - 2, -1, -1): 
-            dp[row][0] = matrix[row][0] + dp[row + 1][0]
-            dp[row][-1] = matrix[row][-1] + dp[row + 1][-1]
-
-        
-            dp[row][0] = min(dp[row][0], matrix[row][0] + dp[row + 1][1])
-            dp[row][-1] = min(dp[row][-1], matrix[row][-1] + dp[row + 1][-2])
+            dp[0][0] = matrix[row][0] + min(dp[1][0], dp[1][1])
+            dp[0][-1] = matrix[row][-1] + min(dp[1][-1], dp[1][-2])
 
             for col in range(1, len(matrix[row]) - 1):
-                dp[row][col] += min([dp[row + 1][col - 1], 
-                                    dp[row + 1][col + 1], 
-                                    dp[row + 1][col]])
+                dp[0][col] = matrix[row][col]
+                dp[0][col] += min([dp[1][col], dp[1][col - 1], dp[1][col + 1]])
 
-        return min(dp[0])
+            dp[0], dp[1] = dp[1], dp[0]
+
+        return min(dp[1])
