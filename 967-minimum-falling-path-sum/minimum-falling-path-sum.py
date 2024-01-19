@@ -12,6 +12,8 @@ class Solution:
                 dp[row][-1] = min(dp[row][-1], matrix[row][-1] + dp[row + 1][-2])
 
             for col in range(1, len(matrix[row]) - 1):
-                dp[row][col] += min([dp[row + 1][col - 1], dp[row + 1][col + 1], dp[row + 1][col]])
+                dp[row][col] += min([dp[row + 1][col - 1], 
+                                    dp[row + 1][col + 1], 
+                                    dp[row + 1][col]])
 
         return min(dp[0])
