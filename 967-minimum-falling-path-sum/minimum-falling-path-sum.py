@@ -1,10 +1,9 @@
 class Solution:
     def minFallingPathSum(self, matrix: List[List[int]]) -> int:
 
-        if len(matrix) == len(matrix[0]) == 1: 
-            return matrix[0][0]
-
-
+        if len(matrix) == 1: 
+            return min(matrix[0])
+            
         dp = [copy.deepcopy(matrix[-2]), copy.deepcopy(matrix[-1])]
 
         for row in range(len(matrix) - 2, -1, -1): 
