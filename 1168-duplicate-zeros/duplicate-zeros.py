@@ -5,7 +5,6 @@ class Solution:
 
         for i in range(len(arr) - 1, -1, -1):
             numZeros -= (arr[i] == 0)
-
             if i + numZeros < len(arr): 
                 arr[i + numZeros] = arr[i]
             if arr[i] == 0 and i + numZeros + 1 < len(arr): 
