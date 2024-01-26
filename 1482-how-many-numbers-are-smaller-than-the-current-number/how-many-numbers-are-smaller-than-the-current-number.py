@@ -7,8 +7,6 @@ class Solution:
 
         for i in range(101):
             bucket[i] += bucket[i - 1]   
-
-        print(bucket)
          
         for i in range(len(nums)): 
             nums[i] = bucket[nums[i] - 1]
