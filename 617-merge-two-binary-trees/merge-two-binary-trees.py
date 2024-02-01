@@ -10,25 +10,14 @@ class Solution:
         if root1 is None and root2 is None: 
             return None
     
-        currNode = None
+        merged_node = TreeNode()
 
-        if root1 and root2: 
-            currNode = root2
-            currNode.val += root1.val
-            print(currNode.val)
-            currNode.left = self.mergeTrees(root1.left, root2.left)
-            currNode.right = self.mergeTrees(root1.right, root2.right)
-
-            return currNode
-
-        if root2 is None: 
-            root1, root2 = root2, root1
-        
-        currNode = root2 
-        currNode.left = self.mergeTrees(None, root2.left)
-        currNode.right = self.mergeTrees(None, root2.right)
-
-        return currNode
+        root1 = root1 if root1 else TreeNode()
+        root2 = root2 if root2 else TreeNode()
+        merged_node.val = (root1.val if root1 else 0) + (root2.val if root2 else 0)
+        merged_node.left = self.mergeTrees(root1.left, root2.left)
+        merged_node.right = self.mergeTrees(root1.right, root2.right)
+        return merged_node
 
         
 
