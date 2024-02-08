@@ -39,10 +39,8 @@ class Solution:
 
         @cache
         def rec(n):
-            if n <= 0: 
-                return 0
-            if int(sqrt(n)) == sqrt(n): 
-                return 1
+            if n == 0 or n == 1: 
+                return n
             
             best = n    
 
