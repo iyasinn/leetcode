@@ -21,17 +21,8 @@ When considering of dp
 The fastest way to get to a number is if it's a perfect square, because if it is, it takes 1 step to get to tha tnumber 
 n - perfect
 closest = rec(n - perfect_square) + 1
-
-
-
 sqrt(n)
-
-
 """
-
-
-
-
 
 
 class Solution:
@@ -45,9 +36,10 @@ class Solution:
                 return 1
             
             best = n    
-
-            for i in range(1, int(sqrt(n)) + 1): 
+            i = 1
+            while (i * i <= n):
                 best = min(best, rec(n - (i * i)) + 1)
+                i += 1
             
             return best 
     
