@@ -47,10 +47,7 @@ class Solution:
             best = n    
 
             for i in range(1, int(sqrt(n)) + 1): 
-
-                r = rec(n - (i * i)) + 1
-                if r < best: 
-                    best = r
+                best = min(best, rec(n - (i * i)) + 1)
             
             return best 
     
