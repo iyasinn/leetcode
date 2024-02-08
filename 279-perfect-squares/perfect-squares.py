@@ -32,8 +32,8 @@ class Solution:
         def rec(n):
             if n == 0: 
                 return 0 
-            if sqrt(n) == int(sqrt(n)): 
-                return 1
+            # if sqrt(n) == int(sqrt(n)): 
+            #     return 1
             
             best = n    
             i = 1
