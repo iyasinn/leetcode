@@ -12,7 +12,7 @@ class Solution:
         tFreq = Counter(t)
         start = 0 
         window = {}
-        best_start, best_end = -1, 10000000
+        best_start, best_end = -1, float('inf')
 
         for end in range(len(s)): 
             window[s[end]] = window.get(s[end], 0) + 1
