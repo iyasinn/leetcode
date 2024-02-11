@@ -13,7 +13,7 @@ class Solution:
         start = 0 
         window = {}
         best_start, best_end = -1, float('inf')
-
+        
         for end in range(len(s)): 
             window[s[end]] = window.get(s[end], 0) + 1
             while start <= end and subset(window, tFreq):
