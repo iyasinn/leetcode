@@ -13,7 +13,6 @@ class Solution:
         start = 0 
         window = {}
         best_start, best_end = -1, 10000000
-        # curr_min = None
 
         for end in range(len(s)): 
             window[s[end]] = window.get(s[end], 0) + 1
