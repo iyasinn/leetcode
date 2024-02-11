@@ -12,14 +12,16 @@ class Solution:
         tFreq = Counter(t)
         start = 0 
         window = {}
-        curr_min = None
+        best_start, best_end = -1, 10000000
+        # curr_min = None
 
         for end in range(len(s)): 
             window[s[end]] = window.get(s[end], 0) + 1
             while start <= end and subset(window, tFreq):
-                if curr_min is None or (end + 1) - start < len(curr_min):
-                    curr_min = s[start:end+1]
+                if (end + 1) - start < (best_end + 1) - best_start:
+                    best_start, best_end = start, end
                 window[s[start]] -= 1
                 start += 1
 
-        return "" if curr_min is None else curr_min
+
+        return "" if best_start == -1 else s[best_start:best_end+1]
