@@ -18,10 +18,8 @@ class Solution:
 
         @cache
         def rec(row, r1, r2): 
-            if r1 < 0 or r2 < 0 or r1 >= COLS or r2 >= COLS:
+            if r1 < 0 or r2 < 0 or r1 >= COLS or r2 >= COLS or row >= ROWS:
                 return 0
-            if row == ROWS - 1: 
-                return grid[row][r1] + grid[row][r2] if r1 != r2 else grid[row][r1]
 
             changes = [0, 1, -1]
             total = 0
