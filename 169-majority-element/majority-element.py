@@ -1,6 +1,6 @@
 class Solution:
     def majorityElement(self, nums: List[int]) -> int:
-        count = 1
+        count = 0
         best = nums[0]
         for n in nums: 
             if n != best: 
