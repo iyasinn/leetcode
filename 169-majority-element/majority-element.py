@@ -3,11 +3,6 @@ class Solution:
         count = 0
         best = nums[0]
         for n in nums: 
-            if n != best: 
-                count -= 1
-            else: 
-                count += 1
-            if count == 0: 
-                best = n
-                count = 1
+            count += int(n == best) + (-1 * (int(n != best)))
+            count, best = (1, n) if count == 0 else (count, best)
         return best
