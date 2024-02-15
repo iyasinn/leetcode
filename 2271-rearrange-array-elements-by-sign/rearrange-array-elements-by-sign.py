@@ -1,26 +1,21 @@
-def next_pos(start, nums):
-    while start < len(nums) and nums[start] < 0: 
-        start += 1
-    return start
-
-def next_neg(start, nums): 
-    while start < len(nums) and nums[start] > 0: 
-        start += 1
-    return start
-    
-
 class Solution:
     def rearrangeArray(self, nums: List[int]) -> List[int]:
-        pos = next_pos(0, nums)
-        neg = next_neg(0, nums)
-
+        pos = 0
+        neg = 0
         output = []
 
-        for _ in range(len(nums) // 2): 
-            output += [nums[pos], nums[neg]]
-            pos = next_pos(pos + 1, nums)
-            neg = next_neg(neg + 1, nums)
-
+        while (len(output) < len(nums)):
+            if len(output) % 2 == 0: 
+                while nums[pos] < 0: 
+                    pos += 1
+                output.append(nums[pos])
+                pos += 1
+            elif len(output) % 2 == 1:
+                while nums[neg] > 0: 
+                    neg += 1
+                output.append(nums[neg])
+                neg += 1 
+                
         return output
 
     # def rearrangeArray(self, nums: List[int]) -> List[int]:
