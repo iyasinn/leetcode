@@ -1,15 +1,13 @@
 class Solution:
     def productExceptSelf(self, nums: List[int]) -> List[int]:
         solution = [1] * len(nums)
-        running_sol = 1
-        for i in range(1, len(nums)): 
-            solution[i] = solution[i - 1] * nums[i - 1] 
-        running_sum = 1
-        for i in range(len(nums) - 1, -1, -1): 
-            solution[i] *= running_sum 
-            running_sum *= nums[i] 
+        left_mult, right_mult = 1, 1
+        for i in range(len(nums)): 
+            solution[i] *= left_mult
+            solution[len(nums) - i - 1] *= right_mult
+            left_mult *= nums[i]
+            right_mult *= nums[len(nums) - i - 1]
 
-        
         return solution
 
         
