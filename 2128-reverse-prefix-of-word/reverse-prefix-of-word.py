@@ -1,6 +1,7 @@
 class Solution:
     def reversePrefix(self, word: str, ch: str) -> str:
         second = -1
+        output = ""
         for index, char in enumerate(word): 
             if char == ch: 
                 second = index 
