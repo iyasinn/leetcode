@@ -5,9 +5,6 @@ class Solution:
         v1 += max(len(v2) - len(v1), 0) * ["0"]
         v2 += max(len(v1) - len(v2), 0) * ["0"]
 
-        print(v1)
-        print(v2)
-
         for a, b in zip(v1, v2):
             if int(a) < int(b): 
                 return -1
