@@ -8,10 +8,10 @@ class Solution:
 
         while end < len(s):
 
-            if end < len(s) and s[end] in letters: 
+            while start < end and s[end] in letters: 
                 letters.remove(s[start])
                 start += 1
-                continue
+                
 
             letters.add(s[end])
             best = max(len(letters), best)
