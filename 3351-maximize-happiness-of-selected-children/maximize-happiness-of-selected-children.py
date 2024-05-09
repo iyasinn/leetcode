@@ -19,8 +19,4 @@ it would be wisest to greedily select the largest children
 class Solution:
     def maximumHappinessSum(self, happiness: List[int], k: int) -> int:
         happiness.sort(reverse=True)
-        total = 0 
-        for i in range(0, k): 
-            total += max(0, happiness[i] - i)
-        return total
-        
+        return sum(max(0, happiness[i] - i) for i in range(k))
