@@ -22,6 +22,5 @@ class Solution:
         total = 0 
         for i in range(0, k): 
             total += max(0, happiness[i] - i)
-
         return total
         
