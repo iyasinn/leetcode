@@ -28,6 +28,10 @@ then there are
 
 
 postfix[i] = postfix[i + 1] + value[i + 1]
+
+Prefix and postfix bucket sort was slow because of large constant size
+Using an index method was much faster
+
 """
 
 def position(n):
@@ -37,13 +41,10 @@ def position(n):
 class Solution:
     def findRelativeRanks(self, score: List[int]) -> List[str]:
 
-        # test = [(score[i], i) for i in range(len(score))]
-
-        index = {score[i]: i for i in range(len(score))}
-        data = sorted(score, reverse=True)
+        mapping = {score[i]: i for i in range(len(score))}
         
-        for i, x in enumerate(data): 
-            score[index[x]] = position(i + 1)
+        for i, key in enumerate(sorted(mapping.keys(), reverse=True)): 
+            score[mapping[key]] = position(i + 1)
 
         return score
 
