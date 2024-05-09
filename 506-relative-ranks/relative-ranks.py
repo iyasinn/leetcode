@@ -37,27 +37,15 @@ def position(n):
 class Solution:
     def findRelativeRanks(self, score: List[int]) -> List[str]:
 
-        arr = [0] * (pow(10, 6) + 1)
-        n = len(score)
+        # test = [(score[i], i) for i in range(len(score))]
 
-        for x in score: 
-            arr[x] += 1
+        index = {score[i]: i for i in range(len(score))}
+        data = sorted(score, reverse=True)
         
-        for i in range(len(arr) - 2, -1, -1): 
-            arr[i] += arr[i + 1]
+        for i, x in enumerate(data): 
+            score[index[x]] = position(i + 1)
 
-        for i, x in enumerate(score):
-            score[i] = position(arr[x])
-        
         return score
-
-
-
-
-
-
-        return []
-        # for i in range(len(score)): 
 
 
 
