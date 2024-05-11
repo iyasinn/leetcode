@@ -24,11 +24,9 @@ class Solution:
 
             if counter == k:
                 return [arr[n], arr[d]]
-            elif n == d: 
-                continue 
-
-            d -= 1
-            heapq.heappush(pq, (arr[n] / arr[d], n, d))
+            if n != d: 
+                d -= 1
+                heapq.heappush(pq, (arr[n] / arr[d], n, d))
 
         return []
 
