@@ -10,25 +10,17 @@ class Solution:
 
         pq = []
         for i in range(len(arr) - 1): 
-    
             heapq.heappush(pq, (arr[i] / arr[-1], i, len(arr) - 1))
-        
 
-        counter = 0
-       
-        while len(pq) > 0: 
-
-            val, n, d = pq[0]
+        for i in range(k - 1): 
+            _, n, d = pq[0]
             heapq.heappop(pq)
-            counter += 1
+            if n == d:
+                continue
+            d -= 1
+            heapq.heappush(pq, (arr[n] / arr[d], n, d))
 
-            if counter == k:
-                return [arr[n], arr[d]]
-            if n != d: 
-                d -= 1
-                heapq.heappush(pq, (arr[n] / arr[d], n, d))
-
-        return []
+        return [arr[pq[0][1]], arr[pq[0][2]]]
 
 
 
