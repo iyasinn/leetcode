@@ -9,10 +9,9 @@ class Solution:
 
             for col in range(1, len(grid) - 1):
 
-                largest = 0
-                for i in range(row - 1, row + 2): 
-                    for j in range(col - 1, col + 2): 
-                        largest = max(largest, grid[i][j])
+                largest = max(grid[row-1][col-1:col + 2]+grid[row][col-1:col + 2]+grid[row+1][col-1:col+2])
+
                 output[-1].append(largest)
-                
+
+        print(output)
         return output 
