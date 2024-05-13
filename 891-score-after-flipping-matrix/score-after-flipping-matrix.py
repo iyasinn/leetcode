@@ -61,36 +61,23 @@ because you can do a flip, and then since you have same row or same column
 then you now have more 0s than 1s
 """
 
-def flip(grid, row=None, col=None):
-    if row is not None and col is not None: 
-        assert(False)
-
-    if row is not None: 
-        for c in range(len(grid[0])): 
-            grid[row][c] ^= 1
-    else: 
-        for r in range(len(grid)): 
-            grid[r][col] ^= 1
-
-
 
 class Solution:
     def matrixScore(self, grid: List[List[int]]) -> int:
-        for row in range(len(grid)): 
-            if grid[row][0] == 0: 
-                flip(grid, row, None)
 
-        for col in range(len(grid[0])): 
-            num_zero = [grid[row][col] for row in range(len(grid))].count(0)
-            if num_zero > len(grid) - num_zero: 
-                flip(grid, None, col)
-        
+        m = len(grid)
+        n = len(grid[0])
+
+   
+              
         total = 0 
-        for row in grid: 
-            total += int("".join(str(x) for x in row), 2)
+
+        for col in range(n):
+            num_one = 0 
+            for row in range(m): 
+                num_one += grid[row][col] if grid[row][0] == 0 else (grid[row][col] ^ 1)
+            total += (pow(2, n - 1 - col) * max(num_one, m - num_one))
 
         return total 
 
 
-
-        return 3
