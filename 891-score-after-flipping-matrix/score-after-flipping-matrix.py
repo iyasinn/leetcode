@@ -67,9 +67,7 @@ class Solution:
 
         m = len(grid)
         n = len(grid[0])
-
-   
-              
+ 
         total = 0 
 
         for col in range(n):
@@ -77,7 +75,7 @@ class Solution:
             for row in range(m): 
                 num_one += grid[row][col] if grid[row][0] == 0 else (grid[row][col] ^ 1)
             total += (pow(2, n - 1 - col) * max(num_one, m - num_one))
-
+            
         return total 
 
 
