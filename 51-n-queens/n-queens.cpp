@@ -25,25 +25,39 @@ class Solution {
 public:
 
     vector<string> curr; 
-    vector<vector<string>> solution;     
+    vector<vector<string>> solution;  
+
+    int mrow = 0; 
+    int mcol = 1; 
+    int mLdig = 2; 
+    int mRdig = 3;  
+
+    int dig_offset; 
+
+    // vector<bool> markrow; 
+    // vector<bool> markcol; 
+    // vector<bool> markleftdig; 
+    // vector<bool> markrightdig;
+
+    vector<vector<bool>> marks; 
+  
 
     bool valid_placement(int row, int col){
-
-        for (int i = 0; i < curr.size(); i++){
-            if (curr[row][i] == 'Q') return false; 
-            if (curr[i][col] == 'Q') return false; 
-        }
-        int lcol = col; 
-        int rcol = col; 
-        for (int i = row; i >= 0; i -= 1){
-            if (lcol >= 0 && curr[i][lcol] == 'Q') return false; 
-            if (rcol < curr.size() && curr[i][rcol] == 'Q') return false; 
-            lcol -= 1; 
-            rcol += 1; 
-        }
-        return true; 
+        int left_dig = row - col + dig_offset;
+        int right_dig = row - (curr.size() - 1 - col) + dig_offset;
+        printf("%d %d %d %d", row, col, left_dig, right_dig);
+        return !(marks[mrow][row] || marks[mcol][col] 
+                || marks[mLdig][left_dig] || marks[mRdig][right_dig]);
     }
 
+    void flip_mark(int row, int col){
+        marks[mrow][row] = !marks[mrow][row];
+        marks[mcol][col] = !marks[mcol][col];
+        int left_dig = row - col + dig_offset;
+        int right_dig = row - (curr.size() - 1 - col) + dig_offset;
+        marks[mLdig][left_dig] = !marks[mLdig][left_dig];
+        marks[mRdig][right_dig] = !marks[mRdig][right_dig];
+    }
 
     void search(int row){
         if (row == curr.size()){
@@ -54,13 +68,18 @@ public:
         for (int col = 0; col < curr.size(); col += 1){
             if (!valid_placement(row, col)) continue; 
             curr[row][col] = 'Q';
+            flip_mark(row, col); 
             search(row + 1); 
             curr[row][col] = '.';
+            flip_mark(row, col);
         }
     }
 
     vector<vector<string>> solveNQueens(int n) {
         curr = vector<string>(n, string(n, '.'));
+
+        dig_offset  = n - 1; 
+        marks = vector<vector<bool>>(4, vector<bool>(n + dig_offset, false));
         search(0);
         return solution; 
     }
