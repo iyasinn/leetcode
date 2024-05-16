@@ -7,19 +7,16 @@ class Solution:
         curr = []
 
         def dfs(nums, curr, output, index):
-            if index < 0: 
+            if index == len(nums): 
+                output.append(curr.copy())
                 return
 
-            dfs(nums, curr, output, index - 1)
-
-            # add current value, add to output, then go to n - 1
+            dfs(nums, curr, output, index + 1)
             curr.append(nums[index])
-            output.append(curr[0::])
-            dfs(nums, curr, output, index - 1)
+            dfs(nums, curr, output, index + 1)
             curr.pop()
-        
-        output.append([])
-        dfs(nums, curr, output, len(nums) - 1)
+
+        dfs(nums, curr, output, 0)
         return output
 
 
