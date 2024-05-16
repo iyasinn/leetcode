@@ -27,25 +27,21 @@ public:
     vector<string> curr; 
     vector<vector<string>> solution;  
 
-    int mrow = 0; 
-    int mcol = 1; 
-    int mLdig = 2; 
-    int mRdig = 3;  
+    // constants to tell you how to index into marks
+    const int mrow = 0; 
+    const int mcol = 1; 
+    const int mLdig = 2; 
+    const int mRdig = 3;  
 
+    // marks will have an offset number of elements for diagonals
+    // diagonals defined by y value, with origin at row index = 0
     int dig_offset; 
-
-    // vector<bool> markrow; 
-    // vector<bool> markcol; 
-    // vector<bool> markleftdig; 
-    // vector<bool> markrightdig;
-
     vector<vector<bool>> marks; 
   
 
     bool valid_placement(int row, int col){
         int left_dig = row - col + dig_offset;
         int right_dig = row - (curr.size() - 1 - col) + dig_offset;
-        printf("%d %d %d %d", row, col, left_dig, right_dig);
         return !(marks[mrow][row] || marks[mcol][col] 
                 || marks[mLdig][left_dig] || marks[mRdig][right_dig]);
     }
@@ -64,7 +60,6 @@ public:
             solution.push_back(curr);
             return;
         }
-
         for (int col = 0; col < curr.size(); col += 1){
             if (!valid_placement(row, col)) continue; 
             curr[row][col] = 'Q';
@@ -77,7 +72,6 @@ public:
 
     vector<vector<string>> solveNQueens(int n) {
         curr = vector<string>(n, string(n, '.'));
-
         dig_offset  = n - 1; 
         marks = vector<vector<bool>>(4, vector<bool>(n + dig_offset, false));
         search(0);
