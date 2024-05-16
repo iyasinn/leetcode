@@ -26,11 +26,6 @@ public:
 
     vector<string> curr; 
     vector<vector<string>> solution;     
-    
-    // vector<int> marked_row; 
-    // vector<int> marked_col; 
-    // vector<int> left_dig; 
-    // vector<int> right_dig;
 
     bool valid_placement(int row, int col){
 
@@ -38,15 +33,13 @@ public:
             if (curr[row][i] == 'Q') return false; 
             if (curr[i][col] == 'Q') return false; 
         }
-
         int lcol = col; 
         int rcol = col; 
-        while (row >= 0){
-            if (lcol >= 0 && curr[row][lcol] == 'Q') return false; 
-            if (rcol < curr.size() && curr[row][rcol] == 'Q') return false; 
+        for (int i = row; i >= 0; i -= 1){
+            if (lcol >= 0 && curr[i][lcol] == 'Q') return false; 
+            if (rcol < curr.size() && curr[i][rcol] == 'Q') return false; 
             lcol -= 1; 
             rcol += 1; 
-            row -= 1; 
         }
         return true; 
     }
@@ -58,22 +51,16 @@ public:
             return;
         }
 
-
         for (int col = 0; col < curr.size(); col += 1){
-
             if (!valid_placement(row, col)) continue; 
-
             curr[row][col] = 'Q';
             search(row + 1); 
             curr[row][col] = '.';
         }
-
     }
 
     vector<vector<string>> solveNQueens(int n) {
-
         curr = vector<string>(n, string(n, '.'));
-
         search(0);
         return solution; 
     }
