@@ -28,10 +28,9 @@ public:
     vector<vector<string>> solution;  
 
     // constants to tell you how to index into marks
-    const int mrow = 0; 
-    const int mcol = 1; 
-    const int mLdig = 2; 
-    const int mRdig = 3;  
+    const int mcol = 0; 
+    const int mLdig = 1; 
+    const int mRdig = 2;  
 
     // marks will have an offset number of elements for diagonals
     // diagonals defined by y value, with origin at row index = 0
@@ -42,12 +41,11 @@ public:
     bool valid_placement(int row, int col){
         int left_dig = row - col + dig_offset;
         int right_dig = row - (curr.size() - 1 - col) + dig_offset;
-        return !(marks[mrow][row] || marks[mcol][col] 
+        return !(marks[mcol][col] 
                 || marks[mLdig][left_dig] || marks[mRdig][right_dig]);
     }
 
     void flip_mark(int row, int col){
-        marks[mrow][row] = !marks[mrow][row];
         marks[mcol][col] = !marks[mcol][col];
         int left_dig = row - col + dig_offset;
         int right_dig = row - (curr.size() - 1 - col) + dig_offset;
@@ -73,7 +71,7 @@ public:
     vector<vector<string>> solveNQueens(int n) {
         curr = vector<string>(n, string(n, '.'));
         dig_offset  = n - 1; 
-        marks = vector<vector<bool>>(4, vector<bool>(n + dig_offset, false));
+        marks = vector<vector<bool>>(3, vector<bool>(n + dig_offset, false));
         search(0);
         return solution; 
     }
