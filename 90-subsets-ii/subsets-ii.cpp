@@ -25,7 +25,6 @@ public:
         for (int j = 0; j < freq[input[i]]; j += 1){
             curr.pop_back();
         }
-
     }
 
 
