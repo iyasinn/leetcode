@@ -6,10 +6,6 @@
 #         self.right = right
 class Solution:
     def removeLeafNodes(self, root: Optional[TreeNode], target: int) -> Optional[TreeNode]:
-
-        if root is None: 
-            return None 
-
         def helper(root): 
             if root is None: 
                 return None
