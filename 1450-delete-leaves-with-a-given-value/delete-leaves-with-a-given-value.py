@@ -14,20 +14,16 @@ class Solution:
             if root is None: 
                 return None
             if root.left is None and root.right is None: 
-                return root
+                return None if root.val == target else root
             
-            helper(root.left)
-            helper(root.right)
+            root.left = helper(root.left)
+            root.right = helper(root.right)
 
-            if root.left and root.left.left is None and root.left.right is None and root.left.val == target: 
-                root.left = None
-            if root.right and root.right.left is None and root.right.right is None and root.right.val == target: 
-                root.right = None 
-            
+            if root.left is None and root.right is None and root.val == target: 
+                return None
+
             return root 
-        
-        val = helper(root)
-        if val.left is None and val.right is None and val.val == target: 
-            return None 
-        return val 
+
+        return helper(root)
+
         
