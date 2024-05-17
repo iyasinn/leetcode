@@ -8,8 +8,6 @@ class Solution:
     def removeLeafNodes(self, root: Optional[TreeNode], target: int) -> Optional[TreeNode]:
         if root is None: 
             return None
-        if root.left is None and root.right is None: 
-            return None if root.val == target else root
         
         root.left = self.removeLeafNodes(root.left, target)
         root.right = self.removeLeafNodes(root.right, target)
