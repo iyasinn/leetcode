@@ -33,7 +33,6 @@ class Solution:
            
             nonlocal curr
             nonlocal solution 
-            print(pair, curr)
             nonlocal num_open
 
             # check if solution
