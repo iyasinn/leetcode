@@ -19,6 +19,13 @@ T(n, m) = T(n - 1, m) + T(n, m + 1)
 We can only have m == number of placed ( and only if it possible to do so
 We can do this with a simple nmber
 
+We can make ourselves have a count 
+
+T(leftCount, rightCount, pair)
+
+So when leftCount == rightCount and pair == n: 
+
+
 
 """
 
@@ -26,40 +33,24 @@ class Solution:
     def generateParenthesis(self, n: int) -> List[str]:
 
         num_open = 0 
-        curr = []
         solution = []
 
-        def dfs(pair): 
-           
-            nonlocal curr
-            nonlocal solution 
-            nonlocal num_open
+
+        def dfs(pair, left, right): 
+        
+            nonlocal solution
 
             # check if solution
-            if pair == n and num_open == 0:
-                solution.append("".join(curr))
+            if len(pair) == (n * 2) and left == right: 
+                solution.append(pair)
                 return
-            
-            # Two different types of promising. Check them both
-            # Then generate next solution
-
-            # Can add a )
-            if num_open > 0: 
-                curr.append(')')
-                num_open -= 1
-                dfs(pair)
-                num_open += 1
-                curr.pop()
-
-            # Can add a (
-            if pair < n: 
-                curr.append('(')
-                num_open += 1
-                dfs(pair + 1) 
-                num_open -= 1
-                curr.pop()
         
-        dfs(0)
+            if left > right:  
+                dfs(pair + ')', left, right + 1)
+            if left < n: 
+                dfs(pair  + '(', left + 1, right)
+        
+        dfs("", 0, 0)
         return solution
             
 
