@@ -6,10 +6,10 @@ class Solution:
 
         for element in tokens:
             if element not in operators:
-                stack.append(int(element))
+                stack.append(element)
             else:
-                secondNum = stack.pop()
-                firstNum = stack.pop()
+                secondNum = int(stack.pop())
+                firstNum = int(stack.pop())
                 match element:
                     case "+":
                         val = firstNum + secondNum
@@ -19,5 +19,5 @@ class Solution:
                         val = firstNum / secondNum
                     case "*":
                         val = firstNum * secondNum
-                stack.append(int(val))
+                stack.append(val)
         return int(stack[0])
