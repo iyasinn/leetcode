@@ -30,7 +30,6 @@ class Solution:
                 current_max += nums[i]
                 i += 1
             else: 
-                print(current_max)
                 current_max += current_max 
                 count += 1
 
