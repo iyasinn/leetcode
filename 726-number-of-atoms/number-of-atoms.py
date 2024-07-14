@@ -7,7 +7,8 @@ class Solution:
     def countOfAtoms(self, formula: str) -> str:
 
         reduced = [formula[0]]
-
+        
+        # Not too necessary
         for i in range(1, len(formula)):
             char = formula[i]
             if reduced[-1][0].isupper() and char.islower(): 
@@ -19,7 +20,8 @@ class Solution:
         
         stack = []
         event = {}
-
+        
+        # Capture multipliers
         for i in range(len(reduced)): 
             if reduced[i] == "(": 
                 stack.append(i)
@@ -30,7 +32,8 @@ class Solution:
 
         freq = {}
         mult = 1
-
+        
+        # Capture frequencies
         for i in range(len(reduced)): 
             if reduced[i].isalpha(): 
                 count = getCount(reduced, i)
@@ -40,12 +43,9 @@ class Solution:
             elif reduced[i] == ")":
                 mult = mult // event[i]
         
+        # Gen solution
         solution = ""
         for key in sorted(freq.keys()): 
             solution += str(key) + (str(freq[key]) if freq[key] > 1 else "")
 
         return solution
-
- 
-                
-        
