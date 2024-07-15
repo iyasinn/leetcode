@@ -29,21 +29,21 @@ class Solution:
 
         nodes = {}
 
-        children = set(d[1] for d in descriptions)
-        root = None
-        
+        children = set()
 
         for d in descriptions: 
             nodes[d[0]] = nodes.get(d[0], TreeNode(d[0]))
             nodes[d[1]] = nodes.get(d[1], TreeNode(d[1]))
-
-            if d[0] not in children: 
-                root = d[0]
+            
+            children.add(d[1])
 
             if d[2]: 
                 nodes[d[0]].left = nodes[d[1]]
             else: 
                 nodes[d[0]].right = nodes[d[1]]
         
+        for node in nodes.values(): 
+            if node.val not in children: 
+                return node
   
-        return nodes[root]
+        return None
