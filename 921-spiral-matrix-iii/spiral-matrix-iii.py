@@ -1,10 +1,4 @@
 
-"""
-I think we can optimize away the spiral 
-We can simply jump to where we need to be 
-But it does depent on the case, but will consider that after
-
-"""
 
 def getDir(x): 
     return abs(x) // x
