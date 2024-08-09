@@ -37,7 +37,6 @@ class Solution:
                 rStart += getDir(dCol)
                 countCol -= 1
 
-            # dRow is the current direction moving across 
             if dRow != 0 and countRow == 0: 
                 dCol = dRow
                 countCol = abs(dCol)
@@ -46,7 +45,6 @@ class Solution:
                 dRow = (abs(dCol) + 1) * (getDir(dCol) * -1) 
                 countRow = abs(dRow)
                 dCol = 0 
-
         
         return visited
 
