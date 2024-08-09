@@ -31,7 +31,9 @@ def testSubGrid(grid, row, col):
 
 class Solution:
     def numMagicSquaresInside(self, grid: List[List[int]]) -> int:
+        
         result = 0
+
         for row in range(len(grid) - 2): 
             for col in range(len(grid) - 2): 
                 result += int(testSubGrid(grid, row, col))
