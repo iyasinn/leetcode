@@ -5,11 +5,9 @@ def testSubGrid(grid, row, col):
 
     numbers = [grid[row + i][col + j] for j in range(0, 3) for i in range(0, 3)]
 
-    # Test uniqueness
     if len(set(numbers)) != len(numbers): 
         return False
     
-    # 1 - 9
     for x in numbers: 
         if x not in [1, 2, 3, 4, 5, 6, 7, 8, 9]: 
             return False
@@ -31,7 +29,7 @@ def testSubGrid(grid, row, col):
 
 class Solution:
     def numMagicSquaresInside(self, grid: List[List[int]]) -> int:
-        
+
         result = 0
 
         for row in range(len(grid) - 2): 
