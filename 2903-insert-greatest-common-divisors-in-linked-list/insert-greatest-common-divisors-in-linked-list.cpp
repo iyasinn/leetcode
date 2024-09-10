@@ -16,12 +16,9 @@
 
 
 int getGCD(int a, int b){
-    // a, b = max(a, b), min(a, b);
-
     if (b == 0){
         return a;
     }
-
     return getGCD(b, a % b);
 }
 
@@ -32,8 +29,6 @@ public:
         auto start = head; 
 
         while (head && head->next){
-            cout << head->val << endl;
-            cout << head->next->val << endl;
 
             auto second = head->next; 
 
