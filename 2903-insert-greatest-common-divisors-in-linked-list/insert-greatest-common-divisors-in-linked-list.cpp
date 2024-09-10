@@ -30,13 +30,10 @@ public:
 
         while (head && head->next){
 
-            auto second = head->next; 
-
             auto temp = new ListNode(getGCD(head->val, head->next->val)); 
-
+            temp->next = head->next; 
             head->next = temp; 
-            temp->next = second; 
-            head = second; 
+            head = temp->next; 
         }
 
         return start; 
