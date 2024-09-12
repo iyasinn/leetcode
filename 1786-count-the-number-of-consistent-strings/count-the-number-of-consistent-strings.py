@@ -4,5 +4,4 @@ class Solution:
         for s in words: 
             if set(s).issubset(set(allowed)): 
                 count += 1
-
         return count
