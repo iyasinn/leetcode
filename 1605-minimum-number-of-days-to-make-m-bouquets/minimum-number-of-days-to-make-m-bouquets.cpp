@@ -13,13 +13,17 @@ public:
             }
             return count >= m; 
         };
-        int l = 0, r = 1e9; 
+        int l = 0, r = 1e9 + 1; 
         int solution = -1; 
+
         while (l < r){
             int mid = l + ((r - l) / 2);
-            if (valid(mid)) { r = mid; solution = mid;  }
+            if (valid(mid)) { 
+                r = mid; 
+                solution = r;  
+            }
             else { l = mid + 1; }
         }
-        return valid(r) ? r : -1; 
+        return solution; 
     }
 };
