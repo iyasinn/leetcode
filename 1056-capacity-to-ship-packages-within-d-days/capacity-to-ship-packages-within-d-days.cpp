@@ -15,7 +15,7 @@ public:
             return curr_day <= days; 
         };
 
-        int left = 0, right = 1e9; 
+        int left = 0, right = std::accumulate(weights.begin(), weights.end(), 0); 
 
         while (left < right){
             int mid = (left + right) / 2; 
