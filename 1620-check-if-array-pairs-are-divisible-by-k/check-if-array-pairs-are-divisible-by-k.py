@@ -41,8 +41,7 @@ class Solution:
             if freq[n] == 0: 
                 continue 
 
-            other = k - (n % k)
-            other = 0 if other == k else other
+            other = 0 if (n % k) == 0 else k - (n % k)
 
             freq[n] -= 1
 
