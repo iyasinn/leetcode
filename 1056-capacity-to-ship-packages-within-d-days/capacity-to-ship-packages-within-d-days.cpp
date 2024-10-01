@@ -6,7 +6,7 @@ class Solution {
 public:
     int shipWithinDays(vector<int>& weights, int days) {
 
-        auto valid = [weights, days](int capacity){
+        auto valid = [&](int capacity){
             int curr_day = 0, curr_capacity = 0; 
             for (int i = 0; i < weights.size(); i++){
                 if (weights[i] > capacity){ return false; }
