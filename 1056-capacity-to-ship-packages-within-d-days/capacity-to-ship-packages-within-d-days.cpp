@@ -1,19 +1,13 @@
 #include <numeric> 
 
 bool valid_solution(vector<int>& weights, int days, int capacity){
-    int curr_day = 0;
-    int curr_capacity = 0;
+    int curr_day = 0, curr_capacity = 0; 
     for (int i = 0; i < weights.size(); i++){
-        if (weights[i] > capacity){
-            return false; 
-        }
-        curr_capacity += weights[i];
-        if (curr_capacity > capacity){
-            curr_day += 1; 
-            curr_capacity = weights[i]; 
-        }
+        if (weights[i] > capacity){ return false; }
+        if (curr_capacity + weights[i] > capacity){ curr_day += 1; curr_capacity = 0; }
+        curr_capacity += weights[i]; 
     }
-    curr_day += int(curr_capacity > 0); 
+    curr_day += 1; 
     return curr_day <= days; 
 }
 
