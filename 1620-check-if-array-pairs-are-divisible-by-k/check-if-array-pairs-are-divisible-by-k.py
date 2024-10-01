@@ -44,9 +44,6 @@ class Solution:
             other = k - (n % k)
             other = 0 if other == k else other
 
-            if n == 0 and other == 0 and freq[0] >= 2: 
-                continue
-
             freq[n] -= 1
 
             if other != 0 and other not in freq or freq[other] == 0:
