@@ -13,9 +13,7 @@ bool valid_solution(vector<int>& weights, int days, int capacity){
             curr_capacity = weights[i]; 
         }
     }
-
     curr_day += int(curr_capacity > 0); 
-
     return curr_day <= days; 
 }
 
@@ -27,7 +25,6 @@ public:
 
         while (left < right){
             int mid = (left + right) / 2; 
-
             if (valid_solution(weights, days, mid)){
                 right = mid; 
             }
