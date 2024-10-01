@@ -30,24 +30,26 @@ And thats the range of the number that we need to add to a so it gtes into the c
 class Solution:
     def canArrange(self, arr: List[int], k: int) -> bool:
 
+
+        new = [0] * (k)
         for i in range(len(arr)): 
-            arr[i] = arr[i] % k
+            modulo = arr[i] % k
+            if modulo < 0: 
+                modulo += k 
+            new[modulo] += 1
 
-        freq = Counter(arr)
-        print(freq)
 
-        for n in arr:
 
-            if freq[n] == 0: 
-                continue 
+        print(new)
 
-            other = 0 if (n % k) == 0 else k - (n % k)
-
-            freq[n] -= 1
-
-            if other != 0 and other not in freq or freq[other] == 0:
-                return False 
-            freq[other] -= 1
+        for val in range(len(new)):
+            other = 0 if val == 0 else k - val
+            print(val, other)
+            # If val == otehr, it needs to be oever
+            if val == other and new[val] % 2 != 0: 
+                return False
+            elif new[val] != new[other]: 
+                return False
 
         return True
 
