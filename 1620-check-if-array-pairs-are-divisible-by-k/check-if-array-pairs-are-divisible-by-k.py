@@ -40,12 +40,9 @@ class Solution:
 
 
 
-        print(new)
 
-        for val in range(len(new)):
+        for val in range((len(new) // 2 + 1)):
             other = 0 if val == 0 else k - val
-            print(val, other)
-            # If val == otehr, it needs to be oever
             if val == other and new[val] % 2 != 0: 
                 return False
             elif new[val] != new[other]: 
