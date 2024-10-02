@@ -1,14 +1,14 @@
 class Solution:
-
-    @cache
     def climbStairs(self, n: int) -> int:
         if n == 1: 
             return 1
-        elif n == 2: 
-            return 2
-        
-        return self.climbStairs(n - 1) + self.climbStairs(n - 2)
-        
+        tab = [0] * n
+        tab[0] = 1 
+        tab[1] = 2; 
 
+        for i in range(2, len(tab)): 
+            tab[i] = tab[i - 1] + tab[i - 2]
+        
+        return tab[-1]
 
         
