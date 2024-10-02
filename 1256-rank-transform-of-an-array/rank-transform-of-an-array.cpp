@@ -19,13 +19,15 @@ class Solution {
 public:
     vector<int> arrayRankTransform(vector<int>& arr) {
 
-
-        auto _set = (std::set<int>(arr.begin(), arr.end())); 
-        auto vec = vector<int>(_set.begin(), _set.end()); 
+        auto vec(arr); 
+        sort(vec.begin(), vec.end());
         std::unordered_map<int, int> m; 
 
         for (int i = 0; i < vec.size(); i++){
-            m[vec[i]] = i + 1; 
+            int val = vec[i];
+            if (!m.count(val)){
+                m[val] = m.size() + 1; 
+            }
         }
 
         for (int i = 0; i < arr.size(); i++){
