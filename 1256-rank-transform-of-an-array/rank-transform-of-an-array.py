@@ -1,8 +1,7 @@
 class Solution:
     def arrayRankTransform(self, arr: List[int]) -> List[int]:
+        copy = sorted(set(arr))
 
-        copy = list(set(arr))
-        copy.sort()
         m = {copy[i]: i + 1 for i in range(len(copy))}
         
         for i in range(len(arr)): 
