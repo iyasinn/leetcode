@@ -18,7 +18,8 @@ because we need to operate on our original array
 class Solution {
 public:
     vector<int> arrayRankTransform(vector<int>& arr) {
-        
+
+
         auto _set = (std::set<int>(arr.begin(), arr.end())); 
         auto vec = vector<int>(_set.begin(), _set.end()); 
         std::unordered_map<int, int> m; 
@@ -50,9 +51,3 @@ public:
     }
 };
 
-static const int kds = []() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
-    cout.tie(nullptr);
-    return 0;
-}();
