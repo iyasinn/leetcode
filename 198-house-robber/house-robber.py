@@ -4,12 +4,11 @@ class Solution:
         if len(nums) == 1: 
             return nums[0]
 
-        tab = [0] * len(nums) 
-        tab[0] = nums[0]
-        tab[1] = max(nums[0], nums[1])
+        r1, r2 = 0, 0
 
-        for i in range(2, len(nums)): 
-            tab[i] = max(nums[i] + tab[i - 2], tab[i - 1])
+        for n in nums: 
+            t = max(r1 + n, r2)
+            r1 = r2 
+            r2 = t
         
-
-        return tab[-1]
+        return r2
