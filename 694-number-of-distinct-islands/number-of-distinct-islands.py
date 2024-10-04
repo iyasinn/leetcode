@@ -30,14 +30,14 @@ class Solution:
             sig += dfs(row, col - 1, "L")
             sig += dfs(row - 1, col, "U")
             sig += dfs(row + 1, col, "D")
-            sig += "O"
+            sig += "|BACK|"
             return sig
 
         count = 0 
 
         for row in range(len(grid)): 
             for col in range(len(grid[0])): 
-                sig = dfs(row, col, "S")
+                sig = dfs(row, col, "|START|")
                 if sig != "": 
                     print(sig)
                 if sig != "" and sig not in seen: 
