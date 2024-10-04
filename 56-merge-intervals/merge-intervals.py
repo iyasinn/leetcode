@@ -3,24 +3,13 @@ def overlap(first, second):
 
 class Solution:
     def merge(self, intervals: List[List[int]]) -> List[List[int]]:
-        intervals.sort(reverse=True)
+        intervals.sort()
         output = []
-
-        print(intervals)
-
-
-        while len(intervals) > 1:
-            if overlap(intervals[-1], intervals[-2]): 
-                first = intervals.pop()
-                second = intervals.pop()
-                new = [first[0], max(first[1], second[1])]
-                intervals.append(new)
-            else: 
-                output.append(intervals[-1])
-                intervals.pop()
-
-
-        if len(intervals) == 1: 
-            output.append(intervals[-1])
         
+        for start, end in intervals:
+            if not output or output[-1][1] < start: 
+                output.append([start, end])
+            elif output[-1][1] >= start: 
+                output[-1][1] = max(output[-1][1], end)
+            
         return output
