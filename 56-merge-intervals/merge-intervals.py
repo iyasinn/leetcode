@@ -10,8 +10,7 @@ class Solution:
         for start, end in intervals:
             if not output or output[-1][1] < start: 
                 output.append([start, end])
-            elif output[-1][1] >= start: 
-                # Prev end and now new end
+            elif overlap(output[-1], [start, end]):
                 output[-1][1] = max(output[-1][1], end)
             
         return output
