@@ -38,9 +38,5 @@ class Solution:
             elif farthest_next == n: 
                 return count + 1
 
-        if curr != n: 
-            print("fail at end")
-            return -1
 
-        
-        return count
+        return -1
