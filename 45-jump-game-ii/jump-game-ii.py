@@ -15,8 +15,7 @@ class Solution:
             if curr == len(nums) - 1: 
                 break
 
-            farth = max(i + nums[i], farth)
-            farth = min(len(nums) - 1, farth)
+            farth = min(len(nums), max(i + nums[i], farth))
 
             if i == curr: 
                 curr = farth
