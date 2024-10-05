@@ -21,19 +21,13 @@ class Solution:
         pp = pprint.PrettyPrinter(indent=4)
         pp.pprint(m)
 
-        if 0 not in m: 
-            return -1
+
 
         farthest_next = -1
         curr = m[0]
         count = 1
 
-        """
-            if in our current range
-            then keep updating farhtest-next
-            If out of range, then use farthest_next
 
-        """
 
         print()
 
