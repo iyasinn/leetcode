@@ -16,12 +16,6 @@ class Solution:
             else: 
                 m[start] = max(m[start], end)
         
-        print(list(range(n)))
-
-        pp = pprint.PrettyPrinter(indent=4)
-        pp.pprint(m)
-
-
 
         farthest_next = -1
         curr = m[0]
