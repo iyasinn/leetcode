@@ -13,7 +13,6 @@ class Solution:
             if freq == curr: 
                 return True
 
-
         return False
         
         
