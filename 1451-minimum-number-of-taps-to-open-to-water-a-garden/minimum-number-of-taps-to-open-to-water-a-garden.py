@@ -19,7 +19,7 @@ class Solution:
         curr = m[0]
         count = 1
 
-        for i in range(1, n + 1):
+        for i in range(1, n + 2):
 
             if i > curr and farthest_next == -1: 
                 return -1
@@ -35,8 +35,8 @@ class Solution:
             
             if curr == n: 
                 return count
-            elif farthest_next == n: 
-                return count + 1
+            # elif farthest_next == n: 
+            #     return count + 1
 
 
         return -1
