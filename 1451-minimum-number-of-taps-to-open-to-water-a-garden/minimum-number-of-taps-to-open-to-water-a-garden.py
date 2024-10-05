@@ -4,10 +4,7 @@ class Solution:
         for i in range(n + 1): 
             start = max(0, i - ranges[i])
             end = min(n, i + ranges[i])
-            if start not in m: 
-                m[start] = end
-            else: 
-                m[start] = max(m[start], end)
+            m[start] = max(end, m.get(start, -1))
         
         farthest_next = -1
         curr = m[0]
