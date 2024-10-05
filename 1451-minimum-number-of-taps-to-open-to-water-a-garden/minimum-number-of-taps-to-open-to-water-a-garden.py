@@ -28,15 +28,11 @@ class Solution:
                 farthest_next = max(farthest_next, m[i])
             
             if i >= curr: 
-                print("next farthest:", curr, farthest_next)
                 curr = farthest_next
                 farthest_next = -1
                 count += 1
             
             if curr == n: 
                 return count
-            # elif farthest_next == n: 
-            #     return count + 1
-
 
         return -1
