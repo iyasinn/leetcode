@@ -1,15 +1,9 @@
-import pprint
-
-
-
-
 class Solution:
     def minTaps(self, n: int, ranges: List[int]) -> int:
         m = {}
         for i in range(n + 1): 
             start = max(0, i - ranges[i])
             end = min(n, i + ranges[i])
-
             if start not in m: 
                 m[start] = end
             else: 
@@ -36,3 +30,6 @@ class Solution:
                 return count
 
         return -1
+
+
+
