@@ -6,7 +6,6 @@ def match(s1, s2, l, r):
 class Solution:
     def areSentencesSimilar(self, s1: str, s2: str) -> bool:
 
-        section = 1
         s1 = s1.split()
         s2 = s2.split()
 
