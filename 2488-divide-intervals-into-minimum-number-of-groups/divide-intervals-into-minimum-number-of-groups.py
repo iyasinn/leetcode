@@ -6,15 +6,13 @@ class Solution:
             events[start] = events.get(start, 0) + 1
             events[end + 1] = events.get(end + 1, 0) - 1
         
-        max_intervals = 0
-        curr = 0 
+        max_overlaps = 0
+        curr_overlaps = 0 
 
         for time in sorted(events): 
             delta = events[time]
-            curr += delta
-
-            if curr > max_intervals: 
-                max_intervals += (curr - max_intervals)
+            curr_overlaps += delta
+            max_overlaps = max(curr_overlaps, max_overlaps)
         
-        return max_intervals
+        return max_overlaps
             
