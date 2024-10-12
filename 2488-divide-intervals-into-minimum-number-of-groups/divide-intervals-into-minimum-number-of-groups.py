@@ -1,10 +1,12 @@
+from collections import defaultdict
+
 class Solution:
     def minGroups(self, intervals: List[List[int]]) -> int:
 
-        events = {}
+        events = defaultdict(int)
         for start, end in intervals: 
-            events[start] = events.get(start, 0) + 1
-            events[end + 1] = events.get(end + 1, 0) - 1
+            events[start] += 1
+            events[end + 1] -= 1
         
         max_overlaps = 0
         curr_overlaps = 0 
