@@ -20,7 +20,7 @@ class Solution:
 
         # O(n)
         pq = [n * -1 for n in nums]
-        heapq.heapify(pq)
+        heapify(pq)
         total = 0
 
         # O(k * log(n))
@@ -28,7 +28,7 @@ class Solution:
         # O(k)
         for _ in range(k): 
             # O(log(n))
-            val = heapq.heappop(pq)
+            val = heappop(pq)
             total += (val * -1)
             # O(log(n))
             heapq.heappush(pq, math.floor(val / 3))
