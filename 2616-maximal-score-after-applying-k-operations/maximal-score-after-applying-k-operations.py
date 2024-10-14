@@ -20,10 +20,8 @@ class Solution:
 
         pq = [n * -1 for n in nums] # Max heap
         heapq.heapify(pq)
-
         total = 0
-        print(nums)
-        print(pq)
+
 
         for _ in range(k): 
             val = heapq.heappop(pq)
