@@ -30,6 +30,7 @@ class Solution:
             # O(log(n))
             val = heapq.heappop(pq)
             total += (val * -1)
+            # O(log(n))
             heapq.heappush(pq, math.floor(val / 3))
         
         return total
