@@ -18,12 +18,16 @@ import math
 class Solution:
     def maxKelements(self, nums: List[int], k: int) -> int:
 
-        pq = [n * -1 for n in nums] # Max heap
+        # O(n)
+        pq = [n * -1 for n in nums]
         heapq.heapify(pq)
         total = 0
 
-
+        # O(k * log(n))
+        
+        # O(k)
         for _ in range(k): 
+            # O(log(n))
             val = heapq.heappop(pq)
             total += (val * -1)
             heapq.heappush(pq, math.floor(val / 3))
