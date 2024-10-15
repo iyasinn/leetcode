@@ -32,7 +32,6 @@ class Solution:
         
         if carry:
             tail.next = ListNode(1)
-
         
         return dummy.next
             
