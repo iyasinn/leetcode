@@ -10,17 +10,15 @@ class Solution:
     def minimumSteps(self, s: str) -> int:
 
         steps = 0 
-        blacks = 0
+        end = len(s) - 1
+
 
         for i in range(len(s)):
             if s[i] == "0":
                 continue
 
-            desEnd = len(s) - 1 - blacks
-
-            steps += (desEnd - i)
-
-            blacks += 1
+            steps += (end - i)
+            end -= 1
 
         return steps
         
