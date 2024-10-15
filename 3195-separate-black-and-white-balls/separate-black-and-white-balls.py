@@ -12,7 +12,7 @@ class Solution:
         steps = 0 
         blacks = 0
 
-        for i in range(len(s) - 1, -1, -1):
+        for i in range(len(s)):
             if s[i] == "0":
                 continue
 
