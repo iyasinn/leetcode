@@ -43,6 +43,11 @@ So now it's a matter of does our delta ever drop below 0. If it does,
 [3, 4, 3] cost
 
 [-1, -1, 1]
+
+
+
+
+
 start at 0, cant do it, move over, cant do it, move over, start here, then try to do a roudn trip
 and eventually we can't do it cuz we cant reach back 
 
@@ -55,15 +60,44 @@ def add_one(val, size):
 
 class Solution:
     def canCompleteCircuit(self, gas: List[int], cost: List[int]) -> int:
-        
+
+
         n = len(gas)
         delta = [gas[i] - cost[i] for i in range(n)]
+
+        curr = 0
+        index = 0
+        total = sum(delta)
+
+        # This tells us taht overall, we are net positive in some way, it just depends if we start in a way that keeps us net positive
+        if total < 0: 
+            return -1
+
+        for i in range(len(delta)): 
+
+            curr += delta[i]
+
+            if curr < 0: 
+                index = i + 1
+                curr = 0
+
+        return index
+
+
+
+
+
+
+
+
+        return 5
+        
+  
 
         start = 0 
         end = 0
         curr = 0
 
-        # So end is not before start
         while add_one(end, n) != start:
 
             curr += delta[end]
