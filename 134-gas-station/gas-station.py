@@ -67,11 +67,6 @@ class Solution:
 
         curr = 0
         index = 0
-        total = sum(delta)
-
-        # This tells us taht overall, we are net positive in some way, it just depends if we start in a way that keeps us net positive
-        if total < 0: 
-            return -1
 
         for i in range(len(delta)): 
 
@@ -81,7 +76,7 @@ class Solution:
                 index = i + 1
                 curr = 0
 
-        return index
+        return index if sum(delta) >= 0 else -1
 
 
 
@@ -94,24 +89,24 @@ class Solution:
         
   
 
-        start = 0 
-        end = 0
-        curr = 0
+        # start = 0 
+        # end = 0
+        # curr = 0
 
-        while add_one(end, n) != start:
+        # while add_one(end, n) != start:
 
-            curr += delta[end]
+        #     curr += delta[end]
 
-            while start <= end and curr < 0: 
-                curr -= delta[start]
-                start = add_one(start, n)
+        #     while start <= end and curr < 0: 
+        #         curr -= delta[start]
+        #         start = add_one(start, n)
 
-            end = add_one(end, n)
+        #     end = add_one(end, n)
 
-            if start == 0 and end == 0: 
-                return -1
+        #     if start == 0 and end == 0: 
+        #         return -1
         
-        return start if curr + delta[end] >= 0 else -1
+        # return start if curr + delta[end] >= 0 else -1
 
 
         
