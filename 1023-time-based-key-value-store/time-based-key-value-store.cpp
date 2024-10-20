@@ -28,7 +28,7 @@ public:
             }
         }
 
-        return solution == -1 ? "" : vec[solution].second; 
+        return r == 0 ? "" : vec[r - 1].second; 
 
     }
 };
