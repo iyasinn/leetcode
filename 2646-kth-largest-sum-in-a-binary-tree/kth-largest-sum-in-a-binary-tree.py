@@ -8,7 +8,6 @@ class Solution:
     def kthLargestLevelSum(self, root: Optional[TreeNode], k: int) -> int:
 
         minpq = []
-
         bfs = [root]
 
         while bfs:
