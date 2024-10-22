@@ -24,6 +24,9 @@ class Solution:
                     bfs.append(node.right)
             
             heappush(minpq, level_val)
+            if len(minpq) == k and level_val < minpq[0]:
+                continue
+
             if len(minpq) > k: 
                 heappop(minpq)
         
