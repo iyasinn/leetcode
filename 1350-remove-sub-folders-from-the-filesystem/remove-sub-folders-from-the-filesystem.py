@@ -1,30 +1,28 @@
-
-
 class Solution:
     def removeSubfolders(self, folder: List[str]) -> List[str]:
 
         mainFolders = set(folder)
         output = []
-
+        
         for path in folder:
+            
             old_path = path
             path = path[1::].split("/")
             path.pop()
 
             parent = ""
-            all_parents = set()
+            found = False
 
             for item in path: 
                 parent += "/" + item
-                all_parents.add(parent)
-                
-            if len(all_parents - mainFolders) < len(all_parents):
-                continue
+                if parent in mainFolders:
+                    found = True
+                    break
             
-            output.append(old_path)
+            if not found:
+                output.append(old_path)
         
         return output
-
 
 # class Solution:
 #     def removeSubfolders(self, folder: List[str]) -> List[str]:
