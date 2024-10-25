@@ -24,9 +24,9 @@ class Solution:
 
         for path in folder:
             old_path = path
-            path = path.split("/")
+            path = path[1::].split("/")
             path.pop()
-            path.pop(0)
+        
 
             parent = ""
             all_parents = set()
@@ -34,7 +34,7 @@ class Solution:
             for item in path: 
                 parent += "/" + item
                 all_parents.add(parent)
-                
+
             if len(all_parents - mainFolders) < len(all_parents):
                 continue
             
