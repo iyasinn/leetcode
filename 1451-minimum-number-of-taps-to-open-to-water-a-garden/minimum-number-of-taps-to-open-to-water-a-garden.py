@@ -17,10 +17,9 @@ class Solution:
         taps = 0
 
         for i in range(n):
-
             if i in m:
                 farthest = max(farthest, m[i])
-            
+                
             if i == curr:
                 curr = farthest
                 farthest = 0 
@@ -28,7 +27,6 @@ class Solution:
             
         if curr >= n: 
             return taps
-
         return -1
             
 
