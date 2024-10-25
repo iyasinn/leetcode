@@ -36,7 +36,7 @@ class Solution:
         prev_empty_spots = ((2 * n) - 1) 
 
         # find spots to insert for p_n, d_n
-        spots_to_insert = ((prev_empty_spots * (prev_empty_spots + 1)) % mod) // 2 
+        spots_to_insert = ((prev_empty_spots * (prev_empty_spots + 1))) // 2 
         
         return (spots_to_insert * self.countOrders(n - 1)) % mod
 
