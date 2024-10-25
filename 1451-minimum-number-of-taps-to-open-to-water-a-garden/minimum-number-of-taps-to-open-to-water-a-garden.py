@@ -1,32 +1,39 @@
 class Solution:
     def minTaps(self, n: int, ranges: List[int]) -> int:
-        m = {}
-        for i in range(n + 1): 
+
+        """
+            Need to get from start to end minimally
+
+        """
+
+        m = defaultdict(int)
+        for i in range(len(ranges)):
             start = max(0, i - ranges[i])
-            end = min(n, i + ranges[i])
-            m[start] = max(end, m.get(start, -1))
+            end = i + ranges[i]
+            m[start] = max(end, m[start])
         
-        farthest_next = -1
-        curr = m[0]
-        count = 1
+        curr = 0
+        farthest = 0 
+        taps = 0
 
-        for i in range(1, n + 2):
+        for i in range(n + 1):
 
-            if i > curr and farthest_next == -1: 
-                return -1
+            if i in m:
+                farthest = max(farthest, m[i])
             
-            if i in m: 
-                farthest_next = max(farthest_next, m[i])
+            if i == curr:
+                curr = farthest
+                farthest = 0 
+                taps += 1
             
-            if i >= curr: 
-                curr = farthest_next
-                farthest_next = -1
-                count += 1
-            
-            if curr == n: 
-                return count
+            if curr >= n: 
+                return taps
 
         return -1
+            
 
 
 
+
+
+        
