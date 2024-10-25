@@ -24,6 +24,9 @@ class Solution:
                 curr = farthest
                 farthest = 0 
                 taps += 1
+
+            if curr == 0:
+                return -1
             
         if curr >= n: 
             return taps
