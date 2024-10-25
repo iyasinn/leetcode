@@ -28,22 +28,15 @@ class Solution:
     def removeSubfolders(self, folder: List[str]) -> List[str]:
 
         folder.sort()
-        output = []
-        parent = []
+        # The last parent we saw
+        output = [folder[0]]
 
-        print(folder)
+        for i in range(1, len(folder)):
 
-        for i in range(len(folder)):
-            path = folder[i].split("/")
-            path.pop(0)
-            print(parent)
-            print(path)
-            if not isParent(parent, path):
-                parent = folder[i].split("/")
-                parent.pop(0)
-                output.append(folder[i])
-                print("new parent", parent)
-            print()
+            parent = output[-1] + "/"
+            if folder[i].startswith(parent):
+                continue
+            output.append(folder[i])
 
         return output
                 
