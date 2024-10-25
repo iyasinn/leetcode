@@ -14,32 +14,66 @@ Or if you start with a prefix
 /a/b -> /a 
 /c/d -> /c
 /c/d/e -> /c, /c/d
-
 """
+
+def isParent(parent, child):
+    if not parent: 
+        return False
+    for i in range(len(parent)):
+        if i >= len(child) or parent[i] != child[i]:
+            return False
+    return True
+
 class Solution:
     def removeSubfolders(self, folder: List[str]) -> List[str]:
 
-        mainFolders = set(folder)
+        folder.sort()
         output = []
+        parent = []
 
-        for path in folder:
-            
-            old_path = path
-            path = path[1::].split("/")
-            path.pop()
+        print(folder)
 
-            parent = ""
-            found = False
+        for i in range(len(folder)):
+            path = folder[i].split("/")
+            path.pop(0)
+            print(parent)
+            print(path)
+            if not isParent(parent, path):
+                parent = folder[i].split("/")
+                parent.pop(0)
+                output.append(folder[i])
+                print("new parent", parent)
+            print()
 
-            for item in path: 
-                parent += "/" + item
-                if parent in mainFolders:
-                    found = True
-                    break
-            
-            if not found:
-                output.append(old_path)
-        
         return output
+                
+
+
+
+      
+
+
+        # mainFolders = set(folder)
+        # output = []
+
+        # for path in folder:
+            
+        #     old_path = path
+        #     path = path[1::].split("/")
+        #     path.pop()
+
+        #     parent = ""
+        #     found = False
+
+        #     for item in path: 
+        #         parent += "/" + item
+        #         if parent in mainFolders:
+        #             found = True
+        #             break
+            
+        #     if not found:
+        #         output.append(old_path)
+        
+        # return output
 
 
