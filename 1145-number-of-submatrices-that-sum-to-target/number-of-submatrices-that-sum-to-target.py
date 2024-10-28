@@ -46,14 +46,12 @@ class Solution:
 
                 curr = 0
                 seen = defaultdict(int)
-                # seen[0] = 1
+                seen[0] = 1
 
                 # Add each row and then see if it's counterpart exists prior
                 for row in range(n): 
                     curr += prefix[row][col_end + 1] - prefix[row][col_start]
                     count += seen[curr - target]
-                    if curr == target:
-                        count += 1
                     seen[curr] += 1
 
 
