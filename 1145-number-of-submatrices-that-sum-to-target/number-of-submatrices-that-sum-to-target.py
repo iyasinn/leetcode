@@ -40,20 +40,16 @@ class Solution:
         m = len(matrix[0])
         prefix = [list(accumulate([0] + row)) for row in matrix]
 
-        # [start, end]
+        # [start, end] inclusive
         for col_start in range(m):
             for col_end in range(col_start, m): 
 
-                curr = 0
                 seen = defaultdict(int)
-                seen[0] = 1
+                row_prefixes = [prefix[row][col_end + 1] - prefix[row][col_start] for row in range(n)]
 
-                # Add each row and then see if it's counterpart exists prior
-                for row in range(n): 
-                    curr += prefix[row][col_end + 1] - prefix[row][col_start]
-                    count += seen[curr - target]
-                    seen[curr] += 1
-
+                for pre in accumulate([0] + row_prefixes): 
+                    count += seen[pre - target]
+                    seen[pre] += 1
 
         return count
 
