@@ -20,8 +20,8 @@ class Solution:
         
     def pickIndex(self) -> int:
 
-        num = random.randint(0, self.total - 1)
-        index = bisect.bisect_right(self.w, num)
+        num = random.randint(1, self.total)
+        index = bisect.bisect_left(self.w, num)
         return index
         
 
