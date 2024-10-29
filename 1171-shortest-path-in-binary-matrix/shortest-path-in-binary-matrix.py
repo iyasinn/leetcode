@@ -6,15 +6,14 @@ class Solution:
     def shortestPathBinaryMatrix(self, grid: List[List[int]]) -> int:
         
         visited = set()
-        directions = [()]
         n = len(grid)
         m = len(grid[0])
 
         # row, col, length
-        bfs = [(0, 0, 1)]
+        bfs = deque([(0, 0, 1)])
 
         while bfs:
-            row, col, length = bfs.pop(0)
+            row, col, length = bfs.popleft()
 
             if row < 0 or row >= n or col < 0 or col >= m:
                 continue
