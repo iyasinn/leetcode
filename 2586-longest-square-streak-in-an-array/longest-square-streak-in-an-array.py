@@ -10,7 +10,7 @@ class Solution:
             curr = 1
             val = n 
 
-            while val * val in elts and val < 1000001:
+            while val * val in elts:
                 curr += 1
                 val = val * val
             best = max(curr, best)
