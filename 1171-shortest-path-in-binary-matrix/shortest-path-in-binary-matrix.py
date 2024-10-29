@@ -16,6 +16,8 @@ class Solution:
         while bfs:
             row, col, length = bfs.pop(0)
 
+            if row < 0 or row >= n or col < 0 or col >= m:
+                continue
             if (row, col) in visited:
                 continue
             if grid[row][col] == 1: 
@@ -31,8 +33,6 @@ class Solution:
                     if drow == 0 and dcol == 0: 
                         continue
                     nrow, ncol = row + drow, col + dcol
-                    if nrow < 0 or nrow >= n or ncol < 0 or ncol >= m:
-                        continue
                     bfs.append((row + drow, col + dcol, length + 1))
                     
         return -1
