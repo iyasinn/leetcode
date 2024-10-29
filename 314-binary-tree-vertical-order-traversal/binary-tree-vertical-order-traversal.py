@@ -8,7 +8,7 @@ class Solution:
     def verticalOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
         if root is None: 
             return []
-            
+
         m = {}
         bfs = [(root, 0)]
 
@@ -22,14 +22,7 @@ class Solution:
             if node.right:
                 bfs.append((node.right, col + 1))
         
-        delta = min(m.keys()) * -1
-        output = [[] for _ in range(len(m))]
-
-        for key, valList in m.items(): 
-            for val in valList:
-                output[key + delta].append(val)
-
-        return output
+        return [m[key] for key in sorted(m)]
 
 
 
