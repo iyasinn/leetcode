@@ -1,6 +1,18 @@
 import random
 import bisect
 
+
+"""
+
+0 - 1 - 4
+
+1 - 2 - 4
+
+
+
+"""
+
+
 class Solution:
     def __init__(self, w: List[int]):
         self.total = sum(w)
