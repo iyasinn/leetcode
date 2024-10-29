@@ -6,14 +6,12 @@ import bisect
 
 class Solution:
     def __init__(self, w: List[int]):
-        self.total = sum(w)
         self.w = list(accumulate(w))
+        self.total = self.w[-1]
         
     def pickIndex(self) -> int:
-
-        # Literally picking a random integer so remember that!
-        num = random.randint(0, self.total - 1)
-        index = bisect.bisect_right(self.w, num)
+        num = random.randint(1, self.total)
+        index = bisect.bisect_left(self.w, num)
         return index
 
         # num = random.randint(1, self.total)
