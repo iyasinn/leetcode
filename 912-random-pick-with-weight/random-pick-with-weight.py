@@ -2,15 +2,6 @@ import random
 import bisect
 
 
-"""
-
-0 - 1 - 4
-
-1 - 2 - 4
-
-
-
-"""
 
 
 class Solution:
@@ -20,9 +11,14 @@ class Solution:
         
     def pickIndex(self) -> int:
 
-        num = random.randint(1, self.total)
-        index = bisect.bisect_left(self.w, num)
+        # Literally picking a random integer so remember that!
+        num = random.randint(0, self.total - 1)
+        index = bisect.bisect_right(self.w, num)
         return index
+
+        # num = random.randint(1, self.total)
+        # index = bisect.bisect_left(self.w, num)
+        # return index
         
 
 
