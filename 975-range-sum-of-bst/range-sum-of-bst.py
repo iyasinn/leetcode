@@ -14,10 +14,10 @@ class Solution:
             return 0
 
         curr = root.val if low <= root.val <= high else 0 
-        
-        if root.val >= low:
+
+        if root.val > low:
             curr += self.rangeSumBST(root.left, low, high)
-        if root.val <= high:
+        if root.val < high:
             curr += self.rangeSumBST(root.right, low, high)
 
         return curr
