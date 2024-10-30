@@ -7,26 +7,38 @@ class Solution:
 
 
         # O(n) two pointer, O(n) space
-        temp = []
-        l = 0
-        r = 0 
+        l = m - 1
+        r = n - 1
 
-        while l < m and r < n: 
-            if nums1[l] < nums2[r]:
-                temp.append(nums1[l])
-                l += 1
+        i = len(nums1) - 1
+
+
+        while l >= 0 and r >= 0: 
+            if nums1[l] > nums2[r]:
+                nums1[i] = nums1[l]
+                i -= 1
+                l -= 1
             else:
-                temp.append(nums2[r])
-                r += 1
+                nums1[i] = nums2[r]
+                i -= 1
+                r -= 1
         
+        while l >= 0: 
+            nums1[i] = nums1[l]
+            i -= 1
+            l -= 1
 
-        temp.extend(nums1[l:m])
-        temp.extend(nums2[r:])
 
-        print(temp)
+        while r >= 0:
+            nums1[i] = nums2[r]
+            i -= 1
+            r -= 1
+
+        # temp.extend(nums1[l:m])
+        # temp.extend(nums2[r:])
+
+        # print(temp)
         
-        for i in range(len(temp)):
-            nums1[i] = temp[i]
 
         return nums1
 
