@@ -20,6 +20,5 @@ class Solution:
             return root
         if (left and right):
             return root
-
         return left or right
         
