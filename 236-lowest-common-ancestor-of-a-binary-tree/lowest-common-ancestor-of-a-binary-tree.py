@@ -25,6 +25,8 @@ class Solution:
             return left
         elif right: 
             return right
+        else: 
+            return None
             
         return left or right
         
