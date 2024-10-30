@@ -11,24 +11,23 @@ class Solution:
         l = 0
         r = 0 
 
-        while l < m or r < n:
-            if l < m and r < n:
-                if nums1[l] < nums2[r]:
-                    temp.append(nums1[l])
-                    l += 1
-                else:
-                    temp.append(nums2[r])
-                    r += 1
-                continue
-            if l < m: 
+        while l < m and r < n: 
+            if nums1[l] < nums2[r]:
                 temp.append(nums1[l])
                 l += 1
             else:
                 temp.append(nums2[r])
                 r += 1
         
+
+        temp.extend(nums1[l:m])
+        temp.extend(nums2[r:])
+
+        print(temp)
+        
         for i in range(len(temp)):
             nums1[i] = temp[i]
+
         return nums1
 
         # O(nlogn), O(1) space
