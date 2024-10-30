@@ -5,6 +5,9 @@
 #         self.left = None
 #         self.right = None
 
+
+""
+
 class Solution:
     def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
         if root is None:
@@ -13,8 +16,10 @@ class Solution:
         left = self.lowestCommonAncestor(root.left, p, q)
         right = self.lowestCommonAncestor(root.right, p, q)
 
-        # So root is the ancestor, and we find something in left or right
-        if root in [p, q] or (left and right):
+        if root in [p, q]: 
+            return root
+
+        if (left and right):
             return root
         return left or right
         
