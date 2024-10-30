@@ -21,12 +21,5 @@ class Solution:
         if (left and right):
             return root
 
-        if left: 
-            return left
-        elif right: 
-            return right
-        else: 
-            return None
-            
         return left or right
         
