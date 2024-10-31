@@ -1,20 +1,23 @@
+# T(n) = from 
+
 class Solution:
-    @cache
+
     def numTrees(self, n: int) -> int:
         if n <= 2:
             return n
-        
-        total = 0
 
-        
+        dp = [0] * (n + 1)
+        dp[0] = 1
+        dp[1] = 1
+        dp[2] = 2
 
-        for i in range(1, n + 1):
-            left = max(1, self.numTrees(i - 1))
-            right = max(1, self.numTrees(n - i))
-            total += (left * right)
+        for i in range(3, n + 1):
+            for j in range(i):
+                dp[i] += (dp[j] * dp[i - j - 1])
+        print(dp)
+        return dp[-1]
 
-        return total
-        
+
 
 """
 This seems somewhat recursive
