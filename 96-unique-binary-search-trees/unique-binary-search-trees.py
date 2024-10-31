@@ -3,8 +3,8 @@
 class Solution:
 
     def numTrees(self, n: int) -> int:
-        if n <= 2:
-            return n
+        # if n <:
+        #     return n
 
         dp = [0] * (n + 1)
         dp[0] = 1
