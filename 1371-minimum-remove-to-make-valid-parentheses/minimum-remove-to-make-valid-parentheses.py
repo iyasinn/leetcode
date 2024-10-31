@@ -15,13 +15,13 @@ class Solution:
                     closed.add(i)
                 else:
                     opens.pop()
-        opens = set(opens)
-        output = []
+        opens = set(opens).union(closed)
+        output = ""
         for i, c in enumerate(s):
             if i in opens or i in closed: 
                 continue
-            output.append(c)
+            output += c
 
-        return "".join(output)
+        return output
                 
     
