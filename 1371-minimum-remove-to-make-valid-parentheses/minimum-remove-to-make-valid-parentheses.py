@@ -4,9 +4,11 @@
 class Solution:
     def minRemoveToMakeValid(self, s: str) -> str:
 
+
+
+
         opens = []
         closed = set()
-
         for i, c in enumerate(s):
             if c not in ["(", ")"]:
                 continue
