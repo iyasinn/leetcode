@@ -8,13 +8,11 @@ class Solution:
 
         dp = [0] * (n + 1)
         dp[0] = 1
-        dp[1] = 1
-        dp[2] = 2
 
-        for i in range(3, n + 1):
+        for i in range(1, n + 1):
             for j in range(i):
                 dp[i] += (dp[j] * dp[i - j - 1])
-        print(dp)
+
         return dp[-1]
 
 
