@@ -18,7 +18,7 @@ class Solution:
         opens = set(opens).union(closed)
         output = ""
         for i, c in enumerate(s):
-            if i in opens or i in closed: 
+            if i in opens:
                 continue
             output += c
 
