@@ -24,6 +24,6 @@ class Solution:
             return left or right, leftCount + rightCount
 
         curr, count = dfs(root)
-        if count != len(nodes): 
-            return None
+        # if count != len(nodes): 
+        #     return None
         return curr
