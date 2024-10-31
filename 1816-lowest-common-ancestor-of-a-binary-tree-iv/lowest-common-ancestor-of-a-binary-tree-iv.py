@@ -9,21 +9,19 @@ class Solution:
     def lowestCommonAncestor(self, root: 'TreeNode', nodes: 'List[TreeNode]') -> 'TreeNode':
         def dfs(root):
             if root is None: 
-                return None, 0
+                return None
             
-            left, leftCount = dfs(root.left)
-            right, rightCount = dfs(root.right)
+            left = dfs(root.left)
+            right = dfs(root.right)
 
             # If root is a value we want
             if root in nodes:
-                return root, leftCount + rightCount + 1
+                return root
             elif left and right:
-                return root, leftCount + rightCount
+                return root
             
             # Now root is definitely not a ancestor because it doesnt have split or count
-            return left or right, leftCount + rightCount
+            return left or right
 
-        curr, count = dfs(root)
-        # if count != len(nodes): 
-        #     return None
+        curr = dfs(root)
         return curr
