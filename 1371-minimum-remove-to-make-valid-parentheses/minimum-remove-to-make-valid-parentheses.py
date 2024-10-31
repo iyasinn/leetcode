@@ -15,7 +15,7 @@ class Solution:
                     closed.add(i)
                 else:
                     opens.pop()
-        # opens = set(opens)
+        opens = set(opens)
         output = []
         for i, c in enumerate(s):
             if i in opens or i in closed: 
