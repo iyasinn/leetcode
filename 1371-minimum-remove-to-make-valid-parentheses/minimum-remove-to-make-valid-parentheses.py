@@ -3,25 +3,24 @@
 
 class Solution:
     def minRemoveToMakeValid(self, s: str) -> str:
-        closed = set()
+
         opens = []
+        output = []
+
         for i, c in enumerate(s):
             if c not in ["(", ")"]:
-                continue
-            if c == "(":
-                opens.append(i)
+                output.append(c)
+            elif c == "(":
+                output.append(c)
+                opens.append(len(output) - 1)
             elif c == ")":
-                if not opens:
-                    closed.add(i)
-                else:
+                if opens:
+                    output.append(c)
                     opens.pop()
-        opens = set(opens).union(closed)
-        output = ""
-        for i, c in enumerate(s):
-            if i in opens:
-                continue
-            output += c
 
-        return output
+        for i in opens:
+            output[i] = ""
+
+        return "".join(output)
                 
     
