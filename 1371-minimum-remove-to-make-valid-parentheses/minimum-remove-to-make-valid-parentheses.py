@@ -3,12 +3,8 @@
 
 class Solution:
     def minRemoveToMakeValid(self, s: str) -> str:
-
-
-
-
-        opens = []
         closed = set()
+        opens = []
         for i, c in enumerate(s):
             if c not in ["(", ")"]:
                 continue
@@ -19,9 +15,8 @@ class Solution:
                     closed.add(i)
                 else:
                     opens.pop()
-        opens = set(opens)
+        # opens = set(opens)
         output = []
-
         for i, c in enumerate(s):
             if i in opens or i in closed: 
                 continue
@@ -29,4 +24,4 @@ class Solution:
 
         return "".join(output)
                 
-        
+    
