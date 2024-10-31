@@ -6,6 +6,8 @@ class Solution:
         
         total = 0
 
+        
+
         for i in range(1, n + 1):
             left = max(1, self.numTrees(i - 1))
             right = max(1, self.numTrees(n - i))
