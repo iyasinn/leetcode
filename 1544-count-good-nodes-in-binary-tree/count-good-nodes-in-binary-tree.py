@@ -9,17 +9,15 @@ class Solution:
         if root is None: 
             return 0 
 
-        best = 0 
 
         def dfs(root, high):
-            nonlocal best
             if root is None:
                 return 0
-            if root.val >= high: 
-                best += 1
             
-            dfs(root.left, max(high, root.val))
-            dfs(root.right, max(high, root.val))
+            total = 1 if root.val >= high else 0
+            total += dfs(root.left, max(high, root.val))
+            total += dfs(root.right, max(high, root.val))
+            return total
+
         
-        dfs(root, float('-inf'))
-        return best
+        return dfs(root, float('-inf'))
