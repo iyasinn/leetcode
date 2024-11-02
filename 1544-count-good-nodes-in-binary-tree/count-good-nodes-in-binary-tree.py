@@ -21,6 +21,8 @@ class Solution:
             
             if top.val >= prevHigh:
                 count += 1
+                
+        return count
 
 
 
