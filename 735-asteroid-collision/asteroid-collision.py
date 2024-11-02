@@ -9,11 +9,8 @@ class Solution:
                 destroyed = bool(abs(stack[-1]) >= abs(n))
                 if abs(stack[-1]) <= abs(n):
                     stack.pop()
-            
             if not destroyed: 
                 stack.append(n)
-
-
         return stack
 
         
