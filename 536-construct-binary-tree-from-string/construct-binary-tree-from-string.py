@@ -21,41 +21,43 @@ And then the subproblem is that we start with a ()
 4 (2(3)(1)) (6(5))
 """
 
+def get_num(s, i):
+    num = ""
+    for c in s[i:]:
+        if c in "()":
+            break
+        num += c
+    return num, i + len(num)
+
 class Solution:
     def str2tree(self, s: str) -> Optional[TreeNode]:
 
-        if len(s) == 0: 
-            return None
+        def dfs(s, i):
+
+            rootNum, i = get_num(s, i)
+
+            if len(rootNum) == 0: 
+                return None, i + 1
 
 
-        rootStr = ""
+            rootNum = int(rootNum)
+            root = TreeNode(rootNum)
 
-        for i in range(len(s)):
-            if s[i] in "()":
-                break
-            rootStr += s[i]
+            if i >= len(s) or s[i] == ")":
+                return root, i + 1
+            
+            if s[i] == "(":
+                root.left, i = dfs(s, i + 1)
+
+            if i < len(s) and s[i] == "(":
+                root.right, i = dfs(s, i + 1)
+            
+            return root, i + 1
         
-        root = TreeNode(int(rootStr))
-
-        opens = 0
-        start = i + 1
-
-        for end in range(i, len(s)):
-            if s[end] == "(":
-                opens += 1
-            elif s[end] == ")":
-                opens -= 1
-            if opens == 0:
-                break
-
-        root.left = self.str2tree(s[start:end])
-
-        if end + 1 >= len(s) or s[end + 1] == ")":
-            return root
-        root.right = self.str2tree(s[end + 2:len(s) - 1])
-
-        return root
-
+        a, b = dfs(s, 0)
+        return a
+        
+       
 
 
 
