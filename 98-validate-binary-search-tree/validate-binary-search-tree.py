@@ -1,53 +1,21 @@
-# Definition for a binary tree node.
-# class TreeNode:
-#     def __init__(self, val=0, left=None, right=None):
-#         self.val = val
-#         self.left = left
-#         self.right = right
-
-
-"""
-First idea. Just do inorder traversal! 
-"""
-
 class Solution:
     def isValidBST(self, root: Optional[TreeNode]) -> bool:
 
-        prev = float('-inf')
-        valid = True
-
-        def dfs(root):
-            nonlocal prev
-            nonlocal valid
+        def dfs(root, prev):
             if root is None: 
-                return True
+                return True, prev
 
-            left = dfs(root.left)
-
-            if root.val <= prev:
-                return False
-
-            prev = root.val 
-            right = dfs(root.right)
-        
-            return left and right
-
-        return dfs(root)
-
-        # def dfs(root, lo, hi):
-        #     if root is None: 
-        #         return True
+            # Traverse the left subtree
+            left_is_valid, left_prev = dfs(root.left, prev)
+            if not left_is_valid:
+                return False, left_prev
             
-        #     if root.val <= lo or root.val >= hi: 
-        #         return False
-            
-        #     left = dfs(root.left, lo, root.val)
-        #     right = dfs(root.right, root.val, hi)
-        #     return left and right
-        
-        # return dfs(root, float('-inf'), float('inf'))
+            # Check current node with the "prev" value from the left subtree
+            if left_prev is not None and root.val <= left_prev:
+                return False, root.val
 
-            
-            
+            # Traverse the right subtree with the current root's value as the new "prev"
+            return dfs(root.right, root.val)
 
-        
+        is_valid, _ = dfs(root, None)
+        return is_valid
