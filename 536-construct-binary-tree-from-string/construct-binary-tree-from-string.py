@@ -33,12 +33,13 @@ class Solution:
     def str2tree(self, s: str) -> Optional[TreeNode]:
 
         def dfs(s, i):
+            if i == len(s): 
+                return None, i
 
             rootNum, i = get_num(s, i)
 
-            if len(rootNum) == 0: 
-                return None, i + 1
-
+            # if len(rootNum) == 0: 
+            #     return None, i + 1
 
             rootNum = int(rootNum)
             root = TreeNode(rootNum)
