@@ -9,6 +9,20 @@ class Solution:
         if root is None: 
             return 0 
 
+        stack = [(root, root.val)]
+        count = 0
+
+        while stack: 
+            top, prevHigh = stack.pop()
+            if top.left: 
+                stack.append((top.left, max(prevHigh, top.val)))
+            if top.right:
+                stack.append((top.right, max(prevHigh, top.val)))
+            
+            if top.val >= prevHigh:
+                count += 1
+
+
 
         def dfs(root, high):
             if root is None:
