@@ -37,10 +37,6 @@ class Solution:
                 return None, i
 
             rootNum, i = get_num(s, i)
-
-            # if len(rootNum) == 0: 
-            #     return None, i + 1
-
             rootNum = int(rootNum)
             root = TreeNode(rootNum)
 
