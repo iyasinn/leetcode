@@ -26,42 +26,35 @@ WHat gives away this boundary?
 Need to figure out what is on left side of tree, and what is on rihgt side of tree with a given roo t
 """
 class Solution:
-
+# 
+    # def constructFromPrePost(self, pre: List[int], post: List[int]) -> Optional[TreeNode]:
+        # if not pre:
+        #     return None
+        # if len(pre) == 1: 
+        #     return TreeNode(pre[0])
+        # root = TreeNode(pre[0], None, None)
+        # leftEnd = post.index(pre[1]) + 1
+        # root.left = self.constructFromPrePost(pre[1:leftEnd+1], post[0:leftEnd])
+        # root.right = self.constructFromPrePost(pre[leftEnd+1:], post[leftEnd:len(post)-1])
+        # return root
     def constructFromPrePost(self, pre: List[int], post: List[int]) -> Optional[TreeNode]:
-        if not pre:
+        if len(pre) == 0:
             return None
         if len(pre) == 1: 
             return TreeNode(pre[0])
-            
+
         root = TreeNode(pre[0], None, None)
+        pre.pop(0)
+        post.pop()
+        leftEnd = post.index(pre[0]) + 1
 
-        leftEnd = post.index(pre[1]) + 1
-
-        left = self.constructFromPrePost(pre[1:leftEnd+1], post[0:leftEnd])
-        right = self.constructFromPrePost(pre[leftEnd+1:], post[leftEnd:len(post)-1])
+        left = self.constructFromPrePost(pre[0:leftEnd], post[0:leftEnd])
+        right = self.constructFromPrePost(pre[leftEnd:], post[leftEnd:])
 
         root.left = left
         root.right = right
 
         return root
-    # def constructFromPrePost(self, pre: List[int], post: List[int]) -> Optional[TreeNode]:
-    #     if len(pre) == 0:
-    #         return None
-    #     if len(pre) == 1: 
-    #         return TreeNode(pre[0])
-
-    #     root = TreeNode(pre[0], None, None)
-    #     pre.pop(0)
-    #     post.pop()
-    #     leftEnd = post.index(pre[0]) + 1
-
-    #     left = self.constructFromPrePost(pre[0:leftEnd], post[0:leftEnd])
-    #     right = self.constructFromPrePost(pre[leftEnd:], post[leftEnd:])
-
-    #     root.left = left
-    #     root.right = right
-
-    #     return root
 
 
 
