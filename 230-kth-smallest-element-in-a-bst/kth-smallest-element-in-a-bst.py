@@ -15,13 +15,14 @@ class Solution:
             nonlocal curr
 
             if root == None: 
-                return 0
+                return
             
             left = dfs(root.left)
             curr += 1
 
             if curr == k: 
                 sol = root.val
+                return
 
             right = dfs(root.right)
         
