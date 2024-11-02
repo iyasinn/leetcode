@@ -24,8 +24,6 @@ And then the subproblem is that we start with a ()
 class Solution:
     def str2tree(self, s: str) -> Optional[TreeNode]:
 
-        print("root:", s)
-
         if len(s) == 0: 
             return None
 
@@ -37,8 +35,6 @@ class Solution:
                 break
             rootStr += s[i]
         
-        
-
         root = TreeNode(int(rootStr))
 
         opens = 0
