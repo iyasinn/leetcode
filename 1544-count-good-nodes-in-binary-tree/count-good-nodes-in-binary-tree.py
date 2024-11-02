@@ -4,36 +4,26 @@
 #         self.val = val
 #         self.left = left
 #         self.right = right
+
+"""
+inorder traversal? no ordering in binary tree
+traversal and keep track of max element along the way? If curr element is larger than max, then we have an issue
+cant sovle this through recursion of subproblem because we car eabout the previous roots
+
+
+"""
 class Solution:
     def goodNodes(self, root: TreeNode) -> int:
-        if root is None: 
-            return 0 
 
-        stack = [(root, root.val)]
-        count = 0
-
-        while stack: 
-            top, prevHigh = stack.pop()
-            if top.left: 
-                stack.append((top.left, max(prevHigh, top.val)))
-            if top.right:
-                stack.append((top.right, max(prevHigh, top.val)))
-            
-            if top.val >= prevHigh:
-                count += 1
-                
-        return count
-
-
-
-        def dfs(root, high):
-            if root is None:
+        def dfs(root, hi):
+            if root is None: 
                 return 0
             
-            total = 1 if root.val >= high else 0
-            total += dfs(root.left, max(high, root.val))
-            total += dfs(root.right, max(high, root.val))
+            total = 1 if root.val >= hi else 0
+            hi = max(root.val, hi)
+            total += dfs(root.left, hi)
+            total += dfs(root.right, hi)
             return total
+        return dfs(root, root.val)
 
         
-        return dfs(root, float('-inf'))
