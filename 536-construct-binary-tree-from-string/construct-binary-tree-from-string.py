@@ -8,53 +8,65 @@
 """
 
 4(2(3)(1))(6(5))
-
 stack 
-push 4 on 
-
+push 4 
 4 (call str2)
-
 Add a ( at the start and end )
-
 And then the subproblem is that we start with a ()
-
 4 (2(3)(1)) (6(5))
 """
+
+def getNumber(s, ptr): 
+    out = ""
+
+    while ptr < len(s):
+        if s[ptr] in "()":
+            break
+        out += s[ptr]
+        ptr += 1
+    return out, ptr
+
 
 class Solution:
     def str2tree(self, s: str) -> Optional[TreeNode]:
 
+        s = list(s)
+        
         if len(s) == 0: 
             return None
-
-
-        rootStr = ""
-
-        for i in range(len(s)):
-            if s[i] in "()":
-                break
-            rootStr += s[i]
         
-        root = TreeNode(int(rootStr))
 
-        opens = 0
-        start = i + 1
+        firstNum, i = getNumber(s, 0)
+        stack = [TreeNode(int(firstNum))]
+        head = stack[0]
 
-        for end in range(i, len(s)):
-            if s[end] == "(":
-                opens += 1
-            elif s[end] == ")":
-                opens -= 1
-            if opens == 0:
-                break
+        while i < len(s):
+            c = s[i]
+            if c in "(":
+                i += 1
+                continue
+            elif c in ")":
+                i += 1
+                stack.pop()
+                
+            
+            num, i = getNumber(s, i)
 
-        root.left = self.str2tree(s[start:end])
+            if num == "": 
+                continue
 
-        if end + 1 >= len(s) or s[end + 1] == ")":
-            return root
-        root.right = self.str2tree(s[end + 2:len(s) - 1])
+            num = int(num)
 
-        return root
+            node = TreeNode(num)
+
+            if stack[-1].left:
+                stack[-1].right = node
+            else:
+                stack[-1].left = node
+            
+            stack.append(node)
+        
+        return head
 
 
 
