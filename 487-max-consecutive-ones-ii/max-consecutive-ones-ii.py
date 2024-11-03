@@ -4,15 +4,20 @@ class Solution:
 
         l = 0
         zero = 0
-        best = 0
+        """
 
+        Create a sliding window
+        Try to get max
+        If we exceed constraint, try drecreasing window
+        But dont decrease entirely, just decreasing and propagate. 
+
+        """
         for r in range(len(nums)):
             zero += int(nums[r] == 0)
-            while l <= r and zero > 1:
+            if zero > 1:
                 zero -= int(nums[l] == 0)
                 l += 1
-            best = max(best, r - l + 1)
-        return best
+        return len(nums) - l
 
 
         
