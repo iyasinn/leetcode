@@ -27,10 +27,9 @@ class Solution:
 
         best = 0
         l = 0 
-        r = 0
         zero = 0
-
-        while r < len(nums):
+        
+        for r in range(len(nums)):
             zero += int(nums[r] == 0)
             while l <= r and zero > k:
                 zero = zero - 1 if nums[l] == 0 else zero
