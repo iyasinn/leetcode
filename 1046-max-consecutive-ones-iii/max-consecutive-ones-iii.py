@@ -25,10 +25,7 @@ class Solution:
         zero = 0
 
         while r < len(nums):
-
-            if nums[r] == 0:
-                zero += 1
-
+            zero += int(nums[r] == 0)
             while l <= r and zero > k:
                 zero = zero - 1 if nums[l] == 0 else zero
                 l += 1
