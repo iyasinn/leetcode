@@ -5,17 +5,13 @@ class Solution:
         stack = []
 
         for n in path: 
-            if n == "":
+            if n in " .":
                 continue
-            if n == ".":
-                continue
-            if n == "..":
-                if stack:
-                    stack.pop()
-                continue
-            stack.append(n)
+            elif n == ".." and stack:
+                stack.pop()
+            elif n != "..":
+                stack.append(n)
 
-        print(stack)
         return "/" + "/".join(stack)
 
 
