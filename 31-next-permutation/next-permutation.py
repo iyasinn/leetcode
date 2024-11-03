@@ -23,7 +23,6 @@ class Solution:
             if nums[i] > nums[l] and nums[i] <= nums[r]:
                 r = i
         
-        print(r, l)
         nums[l], nums[r] = nums[r], nums[l]
         nums[l + 1:] = list((nums[l+1:]))[::-1]
         
