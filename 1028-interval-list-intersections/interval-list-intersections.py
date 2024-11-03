@@ -33,11 +33,6 @@ NO point doing this because we have sorted list of intervals anyway
 """
 
 
-def intersect(first, second):
-    fS, fE = first
-    sS, sE = second
-    return [max(fS, sS), min(fE, sE)], (fS <= sS and fE >= sS) or (sS <= fS and sE >= fS)
-
 
 
 class Solution:
@@ -50,12 +45,12 @@ class Solution:
         while f < len(firstList) and s < len(secondList):
             fS, fE = firstList[f]
             sS, sE = secondList[s]
-            
-            interval, isIntersect = intersect(firstList[f], secondList[s])
-            if isIntersect:
-                output.append(interval)
 
-            # We want to advance the one that ends latest
+            start, end = max(fS, sS), min(fE, sE)
+
+            if start <= end:
+                output.append([start, end])
+
             if firstList[f][1] < secondList[s][1]:
                 f += 1
             else:
