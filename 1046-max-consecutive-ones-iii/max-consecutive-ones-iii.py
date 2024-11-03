@@ -15,9 +15,15 @@ And keep doing for all elements that end at an index
 
 
 """
+"""
+WHenever you see 1s and 0s, think prefix sum 
 
+"""
 class Solution:
     def longestOnes(self, nums: List[int], k: int) -> int:
+
+        # prefix = accumulate([0] + nums)
+
 
         best = 0
         l = 0 
