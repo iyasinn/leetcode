@@ -55,13 +55,11 @@ class Solution:
             if isIntersect:
                 output.append(interval)
 
+            # We want to advance the one that ends latest
             if firstList[f][1] < secondList[s][1]:
                 f += 1
             else:
                 s += 1
-        
-        print(firstList[f:])
-        print(secondList[s:])
 
         return output
 
