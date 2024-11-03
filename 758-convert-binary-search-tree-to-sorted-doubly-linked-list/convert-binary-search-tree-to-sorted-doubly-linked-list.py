@@ -17,11 +17,11 @@ class Solution:
             
             dfs(root.left)
 
-            if not head:
-                head = root
-            else:
+            if head:
                 root.left = prev
                 prev.right = root 
+            else:
+                head = root
             
             prev = root
             dfs(root.right)
