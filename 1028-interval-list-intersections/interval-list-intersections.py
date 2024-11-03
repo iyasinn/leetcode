@@ -51,7 +51,7 @@ class Solution:
             if start <= end:
                 output.append([start, end])
 
-            if firstList[f][1] < secondList[s][1]:
+            if fE <= sE:
                 f += 1
             else:
                 s += 1
