@@ -18,27 +18,40 @@ We only have one new interval
 
 class Solution:
     def insert(self, intervals: List[List[int]], newInterval: List[int]) -> List[List[int]]:
-
-        events = defaultdict(int)
-
-        for s, e in (intervals + [newInterval]):
-            events[s] += 1
-            events[e] -= 1 
-
-        curr = 0
-
+        # Treat newInterval as currInteral
         output = []
-
-        for key in sorted(events):
-            if curr == 0 and curr + events[key] > 0:
-                output.append([key, None])
-            elif curr > 0 and curr + events[key] == 0:
-                output[-1][1] = key
-            elif curr == 0 and curr + events[key] == 0:
-                output.append([key, key])
-            curr += events[key]
-
+        for s, e in intervals: 
+            print(newInterval)
+            if e < newInterval[0]:
+                output.append([s, e])
+            elif s > newInterval[1]:
+                output.append(newInterval)
+                newInterval = [s, e]
+            else:
+                nS, nE = min(s, newInterval[0]), max(e, newInterval[1])
+                newInterval = [nS, nE]
+        output.append(newInterval)
         return output
+
+
+# class Solution:
+#     def insert(self, intervals: List[List[int]], newInterval: List[int]) -> List[List[int]]:
+#         res = []
+#         for interval in intervals:
+#             if interval[1] < newInterval[0]:
+#                 res.append(interval)
+#             elif interval[0] > newInterval[1]:
+#                 res.append(newInterval)
+#                 newInterval = interval
+#             else:
+#                 newInterval = [min(interval[0], newInterval[0]), max(interval[1], newInterval[1])]
+#         res.append(newInterval)
+#         return res
+
+            # So we are after newInterval
+            # Before new Interavl
+            # Or we overlap
+
 
 
 
