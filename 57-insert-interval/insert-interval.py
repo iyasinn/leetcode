@@ -16,9 +16,6 @@ and those new overlaps might then need to be considered
 We only have one new interval
 """
 
-def intersect(a, b):
-    return max(a[0], b[0]) <= min(a[1], b[1])
-
 class Solution:
     def insert(self, intervals: List[List[int]], newInterval: List[int]) -> List[List[int]]:
 
@@ -33,7 +30,6 @@ class Solution:
         output = []
 
         for key in sorted(events):
-            print(key, events[key])
             if curr == 0 and curr + events[key] > 0:
                 output.append([key, None])
             elif curr > 0 and curr + events[key] == 0:
