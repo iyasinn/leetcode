@@ -20,10 +20,7 @@ class Solution:
                     bfs.append(other)
             i += 1
         
-        if len(bfs) != numCourses:
-            return []
-
-        return bfs
+        return bfs if len(bfs) == numCourses else []
 
 
         
