@@ -32,8 +32,8 @@ class Solution:
         def dfs(x, n):
             if n == 0: 
                 return 1
-            curr = self.myPow(x, n // 2)
-            return curr * curr * (1 if n % 2 == 0 else x)
+            curr = self.myPow(x * x, n // 2)
+            return curr * (1 if n % 2 == 0 else x)
 
         return dfs(x, n)
             
