@@ -27,9 +27,11 @@ class Solution:
         output = []
 
         for s, e in intervals:
+
             if newInterval and newInterval < [s, e]:
                 output.append(newInterval)
                 newInterval = None
+
             if output and intersect(output[-1], [s, e]):
                 output[-1] = [min(output[-1][0], s), max(output[-1][1], e)]
             else:
