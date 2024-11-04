@@ -34,7 +34,6 @@ class Solution:
                     clone(n)
                     copy.neighbors.append(self.visited[n])
             
-        
         clone(node)
         return self.visited[node]
 
