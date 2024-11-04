@@ -10,12 +10,12 @@ class Solution:
         dfs = deque([source])
 
         while dfs: 
-            top = dfs.popleft()
+            top = dfs.pop()
+
             if top == destination:
                 return True
             if top in visited:
                 continue
-
             visited.add(top)
             
             for other in adj[top]:
