@@ -21,8 +21,6 @@ class Solution:
         self.visited = {None: None}
 
         def clone(node):
-            if node is None:
-                return
             if node in self.visited:
                 return
 
