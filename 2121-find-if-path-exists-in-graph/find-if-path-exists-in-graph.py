@@ -6,7 +6,7 @@ class Solution:
             adj[a].append(b)
             adj[b].append(a)
 
-        visited = set()
+        visited = set([source])
         dfs = deque([source])
 
         while dfs: 
