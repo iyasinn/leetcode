@@ -12,17 +12,16 @@ class Solution:
         def dfs(i):
             nonlocal curr
             nonlocal output
-            curr.append(i)
-
             if i == len(graph) - 1:
                 output.append(curr.copy())
-                curr.pop()
                 return
 
             for n in graph[i]:
+                curr.append(n)
                 dfs(n)
-
-            curr.pop()
+                curr.pop()
         
+        curr = [0]
         dfs(0)
+
         return output
