@@ -8,7 +8,7 @@ class Solution:
             inDegree[course] += 1
         
 
-        bfs = [i for i in range(len(inDegree)) if inDegree[i] == 0]
+        bfs = [i for i in range(numCourses) if inDegree[i] == 0]
         i = 0
 
         while i < len(bfs): 
