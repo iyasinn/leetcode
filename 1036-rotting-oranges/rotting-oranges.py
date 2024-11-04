@@ -14,6 +14,7 @@ def bfs(row, col, oranges, visited, currentTime):
     bfs(row, col + 1, oranges, visited, currentTime + 1)
     bfs(row, col - 1, oranges, visited, currentTime + 1)
 
+# CHECK OUT MULIT SOURCE BFS
 class Solution:
     def orangesRotting(self, oranges: List[List[int]]) -> int:
 
