@@ -2,7 +2,6 @@ class Solution:
     def validPath(self, n: int, edges: List[List[int]], source: int, destination: int) -> bool:
 
         adj = [[] for _ in range(n)]
-        # bidirectional
         for a, b in edges:
             adj[a].append(b)
             adj[b].append(a)
@@ -11,7 +10,7 @@ class Solution:
         dfs = [source]
 
         while dfs: 
-            top = dfs.pop()
+            top = dfs.pop(0)
             if top == destination:
                 return True
             
