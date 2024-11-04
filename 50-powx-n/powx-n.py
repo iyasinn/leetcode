@@ -25,7 +25,6 @@ x^n = x * x^(n/2) * x^(n/2)
 
 
 class Solution:
-
     def myPow(self, x: float, n: int) -> float:
         if n == 0: 
             return 1
