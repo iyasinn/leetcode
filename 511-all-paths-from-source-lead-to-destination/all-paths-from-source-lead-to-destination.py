@@ -18,7 +18,6 @@ class Solution:
             elif n in visited:
                 return visited[n] == 2
             
-            
             visited[n] = 1
 
             for other in adj[n]:
