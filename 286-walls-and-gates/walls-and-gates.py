@@ -19,7 +19,7 @@ class Solution:
 
             if not (0 <= r < n and 0 <= c < m):
                 continue
-            if rooms[r][c] == -1 or rooms[r][c] != 2147483647:
+            if rooms[r][c] == -1 or rooms[r][c] < 2147483647:
                 continue
 
             rooms[r][c] = dist
