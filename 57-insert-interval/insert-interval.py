@@ -21,29 +21,30 @@ def intersect(a, b):
 
 class Solution:
     def insert(self, intervals: List[List[int]], newInterval: List[int]) -> List[List[int]]:
-        if len(intervals) == 0:
-            return [newInterval]
+
+        events = defaultdict(int)
+
+        for s, e in (intervals + [newInterval]):
+            events[s] += 1
+            events[e] -= 1 
+
+        curr = 0
 
         output = []
 
-        for s, e in intervals:
-
-            if newInterval and newInterval < [s, e]:
-                output.append(newInterval)
-                newInterval = None
-
-            if output and intersect(output[-1], [s, e]):
-                output[-1] = [min(output[-1][0], s), max(output[-1][1], e)]
-            else:
-                output.append([s, e])
-
-            if newInterval and intersect(newInterval, output[-1]):
-                output[-1] = [min(output[-1][0], newInterval[0]), max(output[-1][1], newInterval[1])]
-                newInterval = None
-
-
-        if newInterval: 
-            output.append(newInterval)
+        for key in sorted(events):
+            print(key, events[key])
+            if curr == 0 and curr + events[key] > 0:
+                output.append([key, None])
+            elif curr > 0 and curr + events[key] == 0:
+                output[-1][1] = key
+            elif curr == 0 and curr + events[key] == 0:
+                output.append([key, key])
+            curr += events[key]
 
         return output
+
+
+
+
         
