@@ -8,8 +8,8 @@ class Solution:
                 return
             if grid[r][c] == "0":
                 return
+                
             grid[r][c] = "0"
-
             sink(r - 1, c)
             sink(r + 1, c)
             sink(r, c - 1)
