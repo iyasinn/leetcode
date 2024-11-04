@@ -7,10 +7,10 @@ class Solution:
             adj[b].append(a)
 
         visited = set()
-        dfs = [source]
+        dfs = deque([source])
 
         while dfs: 
-            top = dfs.pop(0)
+            top = dfs.popleft()
             if top == destination:
                 return True
             
