@@ -14,14 +14,11 @@ class Solution:
                     bfs.append((r, c, 0))
         
         while bfs: 
-            print(r, c)
             r, c, dist = bfs.popleft()
 
             for dx, dy in [(1, 0), (-1, 0), (0, 1), (0, -1)]:
                 nr, nc = r + dx, c + dy
-                if not (0 <= nr < n and 0 <= nc < m) or rooms[nr][nc] == -1:
-                    continue
-                if dist + 1 >= rooms[nr][nc]:
+                if not (0 <= nr < n and 0 <= nc < m) or rooms[nr][nc] == -1 or rooms[nr][nc] != 2147483647:
                     continue
                 bfs.append((nr, nc, dist + 1))
                 rooms[nr][nc] = dist + 1
