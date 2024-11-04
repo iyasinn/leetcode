@@ -13,6 +13,8 @@ x^(4/2) * x^(4/2)
 n is even:
 x^n = x^(n/2) * x^(n/2)
 
+
+
 n is odd
 x^n = x * x^(n/2) * x^(n/2)
 
