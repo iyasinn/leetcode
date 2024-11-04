@@ -28,22 +28,12 @@ class Solution:
         if n < 0: 
             n = n * -1
             x = 1 / x
-        
-        @cache
-        def dfs(x, n):
 
+        def dfs(x, n):
             if n == 0: 
                 return 1
-            
-            curr = 1
-            if n % 2 == 1:
-                curr *= x
-                n -= 1
-
-            val = self.myPow(x, n // 2)
-            curr *= (val * val)
-            
-            return curr
+            curr = self.myPow(x, n // 2)
+            return curr * curr * (1 if n % 2 == 0 else x)
 
         return dfs(x, n)
             
