@@ -3,8 +3,6 @@ class Solution:
 
         output = []
 
-        # lower needs to be included
-
         for n in nums: 
             if n > lower: 
                 output.append([lower, n - 1])
