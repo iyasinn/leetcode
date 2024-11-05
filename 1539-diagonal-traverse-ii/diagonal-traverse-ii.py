@@ -13,15 +13,9 @@ class Solution:
         for r in range(len(nums)):
             for c in range(len(nums[r])):
                 total = r + c
-                while total >= len(output):
-                    output.append([])
-                output[total].append(nums[r][c])
-        
-        sol = []
-        print(output)
-        for row in output:
-            sol = sol + row.copy()[::-1]
-        return sol
+                output.append((total, c, r))
+        output.sort()
+        return [nums[r][c] for _, c, r in output]
 
 
         
