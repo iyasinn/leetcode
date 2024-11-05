@@ -18,16 +18,15 @@ class Solution:
 
             visited.add((r, c))
 
-            dfs(r + 1, c)
-            dfs(r - 1, c)
-            dfs(r, c + 1)
-            dfs(r, c - 1)
+            for dx, dy in [(0, 1), (0, -1), (1, 0), (-1, 0)]:
+                dfs(r + dx, c + dy)
 
         # left and right border
         for i in range(n):
             dfs(i, 0)
             dfs(i, m - 1)
-
+            
+        # top and bottom border
         for i in range(m):
             dfs(0, i)
             dfs(n - 1, i)
