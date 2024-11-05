@@ -14,7 +14,6 @@ class Solution:
         
         prefix = list(accumulate([0] + nums))
         m = {}
-
         best = 0
 
         for i in range(len(prefix)):
