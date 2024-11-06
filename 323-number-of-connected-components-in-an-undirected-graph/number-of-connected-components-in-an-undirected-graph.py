@@ -1,25 +1,25 @@
 class Solution:
     def countComponents(self, n: int, edges: List[List[int]]) -> int:
 
-        unvisited = set(range(n))
+        visited = set()
         adj = [[] for _ in range(n)]
         for start, end in edges:
             adj[start].append(end)
             adj[end].append(start)
 
         def dfs(n):
-            nonlocal unvisited
-            if n not in unvisited: 
+            nonlocal visited
+            if n in visited: 
                 return
 
-            unvisited.remove(n)
-            
+            visited.add(n)
+
             for other in adj[n]:
                 dfs(other)
         
         count = 0
         for i in range(n):
-            if i in unvisited:
+            if i not in visited:
                 dfs(i)
                 count += 1
         
