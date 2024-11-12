@@ -6,12 +6,10 @@ class Solution:
         for i in range(1, len(items)):
             items[i][1] = max(items[i][1], items[i - 1][1])
         
-        prices = [price for price, _ in items]
         output = []
 
-
         for price in queries:
-            target_index = bisect_right(prices, price)
+            target_index = bisect_right(items, price, key = lambda x: x[0])
             output.append(0 if target_index == 0 else items[target_index - 1][1])
         
         return output
