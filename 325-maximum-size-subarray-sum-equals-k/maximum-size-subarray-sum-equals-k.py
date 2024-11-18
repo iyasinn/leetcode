@@ -12,8 +12,9 @@
 class Solution:
     def maxSubArrayLen(self, nums: List[int], k: int) -> int:
         
-        prefix = list(accumulate([0] + nums))
+        prefix = list(accumulate(nums))
         m = {}
+        m[0] = -1
         best = 0
 
         for i in range(len(prefix)):
