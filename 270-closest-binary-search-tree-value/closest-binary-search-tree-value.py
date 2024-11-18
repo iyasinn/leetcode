@@ -15,12 +15,17 @@ class Solution:
     def closestValue(self, root: Optional[TreeNode], target: float) -> int:
         if root is None: 
             return float('inf')
-        
-        left = self.closestValue(root.left, target)
-        right = self.closestValue(root.right, target)
 
-        optimal = closer(left, right, target)
-        optimal = closer(optimal, root.val, target)
+        optimal = None
+
+        if root.val < target:
+            optimal = self.closestValue(root.right, target)
+        elif root.val > target:
+            optimal = self.closestValue(root.left, target)
+        else: 
+            return root.val
+        
+        optimal = closer(root.val, optimal, target)
 
         return optimal
 
