@@ -6,8 +6,6 @@ public:
         unordered_set<int> set; // int name
 
 
-        set.reserve(1000);
-
         for (int i = 0; i < nums.size(); i++) {
 
             // cout << "Looking for element: " << nums[i] << endl;
