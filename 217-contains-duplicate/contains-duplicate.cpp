@@ -5,7 +5,8 @@ public:
     bool containsDuplicate(vector<int>& nums) {
         unordered_set<int> set; // int name
 
-        
+
+        set.reserve(1000);
 
         for (int i = 0; i < nums.size(); i++) {
 
